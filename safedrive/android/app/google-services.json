@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "95712956579",
+    "project_id": "safedrive-cs7",
+    "storage_bucket": "safedrive-cs7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95712956579:android:2a8bddbf3a31d94d1caf16",
+        "android_client_info": {
+          "package_name": "com.example.safedrive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95712956579-3mrmqsk6k2kujttn1oldnmuu3ue5rr46.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASDhNWalt-SYhIqKc7aKBX_Twr7k8NzoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95712956579-3mrmqsk6k2kujttn1oldnmuu3ue5rr46.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
