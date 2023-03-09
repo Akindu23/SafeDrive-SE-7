@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:safedrive/firebase_options.dart';
+import 'package:safedrive/mainPage.dart';
 import 'loginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "flutter login UI",
-      home: loginScreen(),
+      home: mainPage(),
     );
   }
 }

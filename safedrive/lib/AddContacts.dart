@@ -49,7 +49,7 @@ class _AddContactsState extends State<AddContacts> {
                   //crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    FilledButton(
+                    ElevatedButton(
                       style: ButtonStyle(
                           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
@@ -65,7 +65,7 @@ class _AddContactsState extends State<AddContacts> {
                       onPressed: (){},
                     ),
                     const SizedBox(width: 10),
-                    FilledButton(
+                    ElevatedButton(
                       style: ButtonStyle(
                           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(

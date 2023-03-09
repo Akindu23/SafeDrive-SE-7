@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/material/checkbox.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class loginScreen extends StatefulWidget {
   @override
@@ -8,7 +9,45 @@ class loginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<loginScreen> {
+
+  //test controllers
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future signIn() async{
+    await FirebaseAuth.instance
+        .signInWithEmailAndPassword(
+        email: _emailController.text.trim() ,
+        password: _passwordController.text.trim(),
+    );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   bool isRememberMe = false;
+
+  Widget buildTextSignUp(){
+    return Container(
+      alignment: Alignment.centerLeft,
+      child: Row(
+          children: [
+            Text("Sign Up",
+              style: TextStyle(
+                fontSize: 34,
+                fontWeight: FontWeight.bold,
+                color: Color(0xff000730),
+              ),
+            ),
+          ],
+        ),
+    );
+  }
+
 
   Widget buildEmail() {
     return Column(
@@ -29,7 +68,7 @@ class _LoginScreenState extends State<loginScreen> {
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(50),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
@@ -39,6 +78,7 @@ class _LoginScreenState extends State<loginScreen> {
               ]),
           height: 60,
           child: TextField(
+            controller: _emailController,
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
               color: Colors.black87,
@@ -79,7 +119,7 @@ class _LoginScreenState extends State<loginScreen> {
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(50),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
@@ -89,6 +129,7 @@ class _LoginScreenState extends State<loginScreen> {
               ]),
           height: 60,
           child: TextField(
+            controller: _passwordController,
             obscureText: true,
             style: TextStyle(
               color: Colors.black87,
@@ -154,33 +195,59 @@ class _LoginScreenState extends State<loginScreen> {
     );
   }
 
-  Widget buildLoginBtn() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 25),
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: () => print("Login Pressed"),
-        child: Text(
-          "Login",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
+Widget buildLoginBtn(){
+    return GestureDetector(
+        onTap: signIn,
+        child: Container(
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Color(0xff000730),
+            borderRadius: BorderRadius.circular(50),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 6,
+                  offset: Offset(0, 2),
+                )
+              ]
+          ),
+          child: Center(
+            child: Text("Sign In",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ),
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          padding: EdgeInsets.all(30),
-        ),
-      ),
     );
+}
+
+  Widget buildGoogleLogin(){
+   return Row(
+     mainAxisAlignment: MainAxisAlignment.center,
+     children: [
+       Container(
+         child: Image(image: AssetImage("assets/googlelogo.png"),
+          height: 30,
+           width: 30,
+         ),
+       ),
+       SizedBox(width: 10,),
+       Text("Sign in with google",style: TextStyle(
+          fontSize: 20,
+         fontWeight: FontWeight.w500,
+        ),
+       ),
+     ],
+   );
   }
+
 
   Widget buildSignUpBtn() {
     return GestureDetector(
-      onTap: () => print("Signup Pressed"),
+      onTap: () => print("Sign Up Pressed"),
       child: RichText(
         text: TextSpan(children: [
           TextSpan(
@@ -219,10 +286,10 @@ class _LoginScreenState extends State<loginScreen> {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                          Color(0x661493ff),
+                          Color(0x662e93a1),
                           //Color(0x991493ff),
                           //Color(0xcc1493ff),
-                          Color(0xff1493ff),
+                          Color(0xff2e93a1),
                         ])),
                 child: SingleChildScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
@@ -233,23 +300,26 @@ class _LoginScreenState extends State<loginScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+                      SizedBox(height: 50,),
                       Container(
                         child: Image(image: AssetImage("assets/safedrivelogo.png"),
-                          height: 200,
-                          width: 200,
+                          height: 100,
+                          width: 100,
                         ),
                       ),
                       Text(
                         "SafeDrive",
                         style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 35,
+                          color: Color(0xff000730),
+                          fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       SizedBox(
-                        height: 50,
+                        height: 35,
                       ),
+                      buildTextSignUp(),
+                      SizedBox(height: 20,),
                       buildEmail(),
                       SizedBox(
                         height: 20,
@@ -257,7 +327,11 @@ class _LoginScreenState extends State<loginScreen> {
                       buildPassword(),
                       buildForgetPassBtn(),
                       buildRememberCb(),
+                      SizedBox(height: 25,),
                       buildLoginBtn(),
+                      SizedBox(height: 25,),
+                      buildGoogleLogin(),
+                      SizedBox(height: 25,),
                       buildSignUpBtn(),
                     ],
                   ),
