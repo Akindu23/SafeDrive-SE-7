@@ -1,11 +1,17 @@
+
+/*
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+*/
 
+/*
 class testPage extends StatefulWidget{
   @override
   _testPageState createState() => _testPageState();
 }
+*/
 
+/*
 class _testPageState extends State<testPage>{
   final user = FirebaseAuth.instance.currentUser!;
 
@@ -30,3 +36,4 @@ class _testPageState extends State<testPage>{
     );
   }
 }
+ */

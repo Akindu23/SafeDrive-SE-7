@@ -36,7 +36,7 @@ class _LoginScreenState extends State<loginScreen> {
       alignment: Alignment.centerLeft,
       child: Row(
           children: [
-            Text("Sign Up",
+            Text("Sign In",
               style: TextStyle(
                 fontSize: 34,
                 fontWeight: FontWeight.bold,
@@ -237,6 +237,7 @@ Widget buildLoginBtn(){
        SizedBox(width: 10,),
        Text("Sign in with google",style: TextStyle(
           fontSize: 20,
+         color: Colors.white,
          fontWeight: FontWeight.w500,
         ),
        ),
@@ -251,16 +252,17 @@ Widget buildLoginBtn(){
       child: RichText(
         text: TextSpan(children: [
           TextSpan(
-              text: "Don\'t have an account?",
+              text: "Don\'t have an account? ",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-              )),
+              ),
+          ),
           TextSpan(
             text: "Sign Up",
             style: TextStyle(
-              color: Colors.white,
+              color: Color(0xff000730),
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
