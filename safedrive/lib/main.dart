@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
 import 'package:safedrive/firebase_options.dart';
 import 'package:safedrive/mainPage.dart';
 import 'loginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+List<CameraDescription>? camera;
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  camera = await availableCameras();
   runApp(MyApp());
 }
 
