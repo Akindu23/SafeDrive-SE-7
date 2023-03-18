@@ -8,5 +8,5 @@ def model_converter(model_name, converted_model_name):
     open(converted_model_name, "wb").write(tflite_model)
 
 if __name__ == "__main__":
-    # model_converter("yawn.h5", "yawn.tflite")
-    model_converter("eye.h5", "eye.tflite")
+    model_converter("model.h5", "model.tflite")
+    
