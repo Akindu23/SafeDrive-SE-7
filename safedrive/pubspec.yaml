@@ -40,8 +40,12 @@ dependencies:
   camera: ^0.10.3
   opencv_4: ^1.0.0
   image_picker: ^0.8.6+1
+<<<<<<< HEAD
   intl_phone_number_input: ^0.7.2
   firebase_database: ^10.0.16
+=======
+  tflite: ^1.1.2
+>>>>>>> 024f0f7560630ee5bca1693ad4be8c3129fc36c0
 
 
 dev_dependencies:
@@ -58,7 +62,7 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#87CEEB"
-  image: assets/splashscreen.png
+  image: assets/images/splashscreen.png
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -73,13 +77,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/safedrivelogo.png
-    - assets/googlelogo.png
-    - assets/drive.png
-    - assets/test.png
-    - assets/restshop.png
-    - assets/emergency.png
-    - assets/history.png
+    - assets/images/
+    - assets/model.tflite
+    - assets/labels.txt
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
