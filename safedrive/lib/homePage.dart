@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
+//<<<<<<< HEAD
 import 'package:safedrive/addContactNum.dart';
 
 import 'AddContacts.dart';
-=======
+//=======
 import 'package:safedrive/camera_screen.dart';
 import 'package:safedrive/util_functions.dart';
->>>>>>> 024f0f7560630ee5bca1693ad4be8c3129fc36c0
+//>>>>>>> 024f0f7560630ee5bca1693ad4be8c3129fc36c0
 
 class homePage extends StatefulWidget {
   @override
@@ -135,7 +135,7 @@ class _homePageState extends State<homePage> {
               ),
 
               SizedBox(height: 24,),
-<<<<<<< HEAD
+//<<<<<<< HEAD
               GestureDetector(
                 onTap: (){_navigateToAddContacts(context);},
                 child: Container(
@@ -165,7 +165,9 @@ class _homePageState extends State<homePage> {
                         )
                       ]
                   ),
-=======
+                ),
+              ),
+//=======
               Container(
                 child: Column(
                   children: [
@@ -193,7 +195,7 @@ class _homePageState extends State<homePage> {
                       )
                     ]
                 ),
->>>>>>> 024f0f7560630ee5bca1693ad4be8c3129fc36c0
+//>>>>>>> 024f0f7560630ee5bca1693ad4be8c3129fc36c0
 
                 ),
               ),
