@@ -57,7 +57,7 @@ class _TestFatigueState extends State<TestFatigue> {
                         ),
                       ),
                       Container(
-                        child: Image(image: AssetImage("assets/testFatigue.png"),
+                        child: Image(image: AssetImage("assets/images/testFatigue.png"),
                           height: 250,
                           width: 250,
                         ),
