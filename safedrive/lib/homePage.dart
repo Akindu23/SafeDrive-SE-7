@@ -86,7 +86,7 @@ class _homePageState extends State<homePage> {
                 child: Column(
                   children: [
                     Image(
-                      image: AssetImage("assets/test.png"),
+                      image: AssetImage("assets/images/test.png"),
                       height: 250,
                       width: 250,
                     ),
@@ -119,7 +119,7 @@ class _homePageState extends State<homePage> {
                 child: Column(
                   children: [
                     Image(
-                      image: AssetImage("assets/restshop.png"),
+                      image: AssetImage("assets/images/restshop.png"),
                       height: 250,
                       width: 250,
                     ),
@@ -152,7 +152,7 @@ class _homePageState extends State<homePage> {
                 child: Column(
                   children: [
                     Image(
-                      image: AssetImage("assets/emergency.png"),
+                      image: AssetImage("assets/images/emergency.png"),
                       height: 250,
                       width: 250,
                     ),
@@ -185,7 +185,7 @@ class _homePageState extends State<homePage> {
                 child: Column(
                   children: [
                     Image(
-                      image: AssetImage("assets/history.png"),
+                      image: AssetImage("assets/images/history.png"),
                       height: 250,
                       width: 250,
                     ),
