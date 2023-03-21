@@ -229,7 +229,7 @@ Widget buildLoginBtn(){
      mainAxisAlignment: MainAxisAlignment.center,
      children: [
        Container(
-         child: Image(image: AssetImage("assets/googlelogo.png"),
+         child: Image(image: AssetImage("assets/images/googlelogo.png"),
           height: 30,
            width: 30,
          ),
@@ -304,7 +304,7 @@ Widget buildLoginBtn(){
                     children: <Widget>[
                       SizedBox(height: 50,),
                       Container(
-                        child: Image(image: AssetImage("assets/safedrivelogo.png"),
+                        child: Image(image: AssetImage("assets/images/safedrivelogo.png"),
                           height: 100,
                           width: 100,
                         ),
