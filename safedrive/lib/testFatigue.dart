@@ -89,57 +89,12 @@ class _TestFatigueState extends State<TestFatigue> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      // ElevatedButton(
-                      //   style: ButtonStyle(
-                      //       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      //           side: BorderSide(width:3, color:Colors.brown),
-                      //           RoundedRectangleBorder(
-                      //             // borderRadius: BorderRadius.circular(8.0),
-                      //             borderRadius: BorderRadius.circular(50),
-                      //             // side: const BorderSide(color: Colors.red)
-                      //           )
-                      //       )
-                      //   ),
-                      //   child: const Text(
-                      //     "Add",
-                      //     style: TextStyle(fontSize: 25),
-                      //   ),
-                      //   onPressed: (){},
-                      // ),
                       SizedBox(height: 25,),
                       buildStartBtn(),
                     ],
                   ),
                 ),
               )
-    //         ],
-    //       ),
-    //     ),
-    //   ),
      );
-
-
-
-      // body: Center(
-      //     child:Text(
-      //         "Let's Test Your Fatigue Level",
-      //         style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
-      //         textAlign: TextAlign.center,
-      //         //Image.asset(name)
-      //     )
-            // child: Column(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: <Widget>[
-            //   SizedBox(height: 50,),
-            // Container(
-            //   child: Image(image: AssetImage("assets/safedrivelogo.png"),
-            //     height: 100,
-            //     width: 100,
-            //   ),
-            // ),
-            //   ],
-            // )
-    //   ),
-    // );
   }
 }
