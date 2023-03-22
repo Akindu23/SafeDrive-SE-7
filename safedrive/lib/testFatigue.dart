@@ -80,7 +80,7 @@ class _TestFatigueState extends State<TestFatigue> {
                           //fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(
+                      const Text(
                         "You can't break if you are asleep."+"\n",
                         textAlign: TextAlign.center,
                         style: TextStyle(

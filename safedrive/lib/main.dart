@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:safedrive/firebase_options.dart';
+import 'package:safedrive/homePage.dart';
 import 'package:safedrive/mainPage.dart';
+import 'package:safedrive/testFatigue.dart';
 import 'loginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "flutter login UI",
-      home: mainPage(),
+      home: TestFatigue(),
     );
   }
 }
