@@ -47,7 +47,7 @@ class _TestFatigueState extends State<TestFatigue> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       // SizedBox(height: 0,),
-                      Text(
+                      const Text(
                         "Let's Test Your" +"\n" +"Fatigue Level",
                         textAlign: TextAlign.center,
                         style: TextStyle(
