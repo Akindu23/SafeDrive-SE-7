@@ -41,6 +41,8 @@ dependencies:
   opencv_4: ^1.0.0
   image_picker: ^0.8.6+1
   tflite: ^1.1.2
+  intl_phone_number_input: ^0.7.2
+  firebase_database: ^10.0.16
 
 
 dev_dependencies:

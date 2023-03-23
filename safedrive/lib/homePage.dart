@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:safedrive/camera_screen.dart';
 import 'package:safedrive/util_functions.dart';
 
+import 'AddContacts.dart';
+
 class homePage extends StatefulWidget {
   @override
   _homePageState createState() => _homePageState();
@@ -148,35 +150,38 @@ class _homePageState extends State<homePage> {
               SizedBox(
                 height: 24,
               ),
-              Container(
-                child: Column(
-                  children: [
-                    Image(
-                      image: AssetImage("assets/images/emergency.png"),
-                      height: 250,
-                      width: 250,
-                    ),
-                    Text(
-                      "Emergency Contacts",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: (){_navigateToAddContacts(context);},
+                child: Container(
+                  child: Column(
+                    children: [
+                      Image(
+                        image: AssetImage("assets/images/emergency.png"),
+                        height: 250,
+                        width: 250,
                       ),
-                    ),
-                  ],
+                      Text(
+                        "Emergency Contacts",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  height: 300,
+                  width: 350,
+                  decoration: BoxDecoration(
+                      color: Color(0xffFAFAFA),
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                          offset: Offset(0, 2),
+                        )
+                      ]),
                 ),
-                height: 300,
-                width: 350,
-                decoration: BoxDecoration(
-                    color: Color(0xffFAFAFA),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      )
-                    ]),
               ),
               SizedBox(
                 height: 24,
@@ -220,4 +225,7 @@ class _homePageState extends State<homePage> {
       ),
     );
   }
+}
+void _navigateToAddContacts(BuildContext context) {
+  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddContacts()));
 }
