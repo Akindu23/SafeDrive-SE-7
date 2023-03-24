@@ -3,6 +3,8 @@ import 'package:safedrive/main.dart';
 import 'package:safedrive/util_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:tflite/tflite.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'dart:async';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({ Key? key }) : super(key: key);
@@ -16,12 +18,21 @@ class _CameraScreenState extends State<CameraScreen> {
   CameraImage? cameraImage;
   CameraController? cameraController;
   String output = '';
+  int fatigueCounter = 0;
+  int alarmCounter = 0;
 
   @override
   void initState() {
     super.initState();
     loadCamera();
     loadModel();
+
+    //Resets the alarm counter every 30 seconds
+    Timer.periodic(Duration(seconds: 30), (timer) {
+      setState(() {
+        alarmCounter = 0;
+      });
+    });
   }
 
   loadCamera() {
@@ -58,6 +69,19 @@ class _CameraScreenState extends State<CameraScreen> {
       prediction!.forEach((element) {
         setState(() {
           output = element['label'];
+          if (output == '1 Fatigue') {
+            fatigueCounter++;
+          }
+          if (fatigueCounter > 30) {
+            final player = AudioPlayer();
+            player.play(
+              AssetSource('alarm.mp3'),
+            );
+            //Puase alarm after 5 seconds
+            Timer(Duration(seconds: 5), () => player.pause());
+            fatigueCounter = 0;
+            alarmCounter++;
+          }
         });
       });
     }
@@ -88,6 +112,14 @@ class _CameraScreenState extends State<CameraScreen> {
           Text(output, style: TextStyle(
               color: Colors.black,
               fontSize: 20.0),
+          ),
+          // Text(fatigueCounter.toString(), style: TextStyle(
+          //     color: Colors.black,
+          //     fontSize: 20.0),
+          // ),
+          // Text(alarmCounter.toString(), style: TextStyle(
+          //     color: Colors.black,
+          //     fontSize: 20.0),
           )
         ],
       ),

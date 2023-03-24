@@ -43,6 +43,7 @@ dependencies:
   tflite: ^1.1.2
   intl_phone_number_input: ^0.7.2
   firebase_database: ^10.0.16
+  audioplayers: ^3.0.1
 
 
 dev_dependencies:
@@ -77,6 +78,7 @@ flutter:
     - assets/images/
     - assets/model.tflite
     - assets/labels.txt
+    - assets/alarm.mp3
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
