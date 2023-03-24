@@ -120,7 +120,7 @@ class _CameraScreenState extends State<CameraScreen> {
           // Text(alarmCounter.toString(), style: TextStyle(
           //     color: Colors.black,
           //     fontSize: 20.0),
-          )
+          // )
         ],
       ),
     );
