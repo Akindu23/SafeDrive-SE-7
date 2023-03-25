@@ -6,6 +6,7 @@ import 'package:safedrive/mainPage.dart';
 import 'package:safedrive/testFatigue.dart';
 import 'loginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 List<CameraDescription>? camera;
 
@@ -21,10 +22,12 @@ void main() async{
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "flutter login UI",
-      home: mainPage(),
+        return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "flutter login UI",
+        home: mainPage(),
+
+
     );
   }
 }
