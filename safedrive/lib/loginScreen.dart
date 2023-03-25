@@ -229,7 +229,7 @@ Widget buildLoginBtn(){
      mainAxisAlignment: MainAxisAlignment.center,
      children: [
        Container(
-         child: Image(image: AssetImage("assets/images/googlelogo.png"),
+         child: Image(image: AssetImage("assets/images/googleLogo.png"),
           height: 30,
            width: 30,
          ),
