@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:safedrive/camera_screen.dart';
+import 'package:safedrive/testFatigue.dart';
 import 'package:safedrive/util_functions.dart';
 
 import 'AddContacts.dart';
@@ -84,7 +85,11 @@ class _homePageState extends State<homePage> {
               SizedBox(
                 height: 24,
               ),
-              Container(
+          GestureDetector(
+            onTap: () {
+              UtilFunction.navigateTo(context, TestFatigue());
+            },
+              child: Container(
                 child: Column(
                   children: [
                     Image(
@@ -114,6 +119,7 @@ class _homePageState extends State<homePage> {
                       )
                     ]),
               ),
+          ),
               SizedBox(
                 height: 24,
               ),
