@@ -1,15 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:safedrive/AddContacts.dart';
-import 'package:safedrive/addContactNum.dart';
-import 'package:safedrive/homePage.dart';
-import 'package:safedrive/signupScreenOne.dart';
-import 'package:safedrive/signupScreenTwo.dart';
-import 'package:safedrive/testFatigue.dart';
-import 'loginScreen.dart';
-import 'testPage.dart';
-
-
+import 'package:safedrive/screens/emergency_contacts_screens/AddContacts.dart';
+import 'package:safedrive/screens/emergency_contacts_screens/addContactNum.dart';
+import 'package:safedrive/screens/home_page_screens/homePage.dart';
+import 'package:safedrive/screens/login_screens/signupScreenOne.dart';
+import 'package:safedrive/screens/login_screens/signupScreenTwo.dart';
+import 'package:safedrive/screens/fatigue_test_screens/testFatigue.dart';
+import '../login_screens/loginScreen.dart';
 
 class mainPage extends StatelessWidget{
   @override

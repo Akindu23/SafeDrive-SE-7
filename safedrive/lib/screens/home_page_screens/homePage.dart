@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:safedrive/camera_screen.dart';
-import 'package:safedrive/testFatigue.dart';
-import 'package:safedrive/util_functions.dart';
+import 'package:safedrive/screens/fatigue_detection_screens/camera_screen.dart';
+import 'package:safedrive/screens/fatigue_test_screens/testFatigue.dart';
+import 'package:safedrive/utils/util_functions.dart';
 
-import 'AddContacts.dart';
+import '../emergency_contacts_screens/AddContacts.dart';
 
 class homePage extends StatefulWidget {
   @override
@@ -192,39 +192,39 @@ class _homePageState extends State<homePage> {
               SizedBox(
                 height: 24,
               ),
-              Container(
-                child: Column(
-                  children: [
-                    Image(
-                      image: AssetImage("assets/images/history.png"),
-                      height: 250,
-                      width: 250,
-                    ),
-                    Text(
-                      "Journey History",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                height: 300,
-                width: 350,
-                decoration: BoxDecoration(
-                    color: Color(0xffFAFAFA),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      )
-                    ]),
-              ),
-              SizedBox(
-                height: 25,
-              ),
+              // Container(
+              //   child: Column(
+              //     children: [
+              //       Image(
+              //         image: AssetImage("assets/images/history.png"),
+              //         height: 250,
+              //         width: 250,
+              //       ),
+              //       Text(
+              //         "Journey History",
+              //         style: TextStyle(
+              //           fontSize: 22,
+              //           fontWeight: FontWeight.bold,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              //   height: 300,
+              //   width: 350,
+              //   decoration: BoxDecoration(
+              //       color: Color(0xffFAFAFA),
+              //       borderRadius: BorderRadius.circular(20),
+              //       boxShadow: [
+              //         BoxShadow(
+              //           color: Colors.black26,
+              //           blurRadius: 6,
+              //           offset: Offset(0, 2),
+              //         )
+              //       ]),
+              // ),
+              // SizedBox(
+              //   height: 25,
+              // ),
             ],
           ),
         ),

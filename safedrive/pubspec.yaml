@@ -43,12 +43,9 @@ dependencies:
   tflite: ^1.1.2
   intl_phone_number_input: ^0.7.2
   firebase_database: ^10.0.16
-
   audioplayers: ^3.0.1
-
   flutter_screenutil: ^5.7.0
   google_sign_in: ^6.0.2
-
 
 
 dev_dependencies:
