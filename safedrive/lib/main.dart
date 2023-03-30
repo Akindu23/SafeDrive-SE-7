@@ -1,3 +1,5 @@
+// @dart=2.9
+
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:safedrive/controllers/firebase_options.dart';
@@ -8,7 +10,7 @@ import 'package:safedrive/screens/login_screens/loginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-List<CameraDescription>? camera;
+List<CameraDescription> camera;
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

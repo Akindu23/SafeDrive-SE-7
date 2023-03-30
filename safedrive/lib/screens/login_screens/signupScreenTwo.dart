@@ -277,10 +277,10 @@ class _SignupScreenTwoState extends State<signupScreenTwo> {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                          Color(0x662e93a1),
+                          Color(0x87ceebff),
                           //Color(0x991493ff),
                           //Color(0xcc1493ff),
-                          Color(0xff2e93a1),
+                          Color(0xff2e93ff),
                         ])),
                 child: SingleChildScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
