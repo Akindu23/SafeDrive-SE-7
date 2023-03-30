@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:safedrive/screens/fatigue_detection_screens/camera_screen.dart';
 import 'package:safedrive/screens/fatigue_test_screens/testFatigue.dart';
+import 'package:safedrive/screens/maps_screen/maps_screen.dart';
 import 'package:safedrive/utils/util_functions.dart';
 
 import '../emergency_contacts_screens/AddContacts.dart';
@@ -123,7 +124,11 @@ class _homePageState extends State<homePage> {
               SizedBox(
                 height: 24,
               ),
-              Container(
+          GestureDetector(
+            onTap: () {
+              UtilFunction.navigateTo(context, RestStopScreen());
+            },
+              child: Container(
                 child: Column(
                   children: [
                     Image(
@@ -153,6 +158,7 @@ class _homePageState extends State<homePage> {
                       )
                     ]),
               ),
+          ),
               SizedBox(
                 height: 24,
               ),
