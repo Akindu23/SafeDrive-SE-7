@@ -1,18 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:safedrive/screens/home_page_screens/homePage.dart';
-import 'AddContacts.dart';
+import 'package:safedrive/screens/home_page_screens/home_page.dart';
 
-class addContactNum extends StatefulWidget{
+class AddContactNum extends StatefulWidget{
+  const AddContactNum({super.key});
+
   @override
-  State<addContactNum> createState() => _addContactNumState();
+  State<AddContactNum> createState() => _AddContactNumState();
 
 }
 
-class _addContactNumState extends State<addContactNum>{
+class _AddContactNumState extends State<AddContactNum>{
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final user = FirebaseAuth.instance.currentUser!;
@@ -23,8 +23,8 @@ class _addContactNumState extends State<addContactNum>{
   String initialCountry = 'LK';
   PhoneNumber number = PhoneNumber(isoCode: 'LK');
 
-  bool vali = false;
-  late String phnum;
+  bool validation = false;
+  late String phoneNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -41,27 +41,27 @@ class _addContactNumState extends State<addContactNum>{
             children: <Widget>[
               InternationalPhoneNumberInput(
                 onInputChanged: (PhoneNumber number) {
-                  phnum = number.phoneNumber!;
-                  print(number.phoneNumber);
+                  phoneNumber = number.phoneNumber!;
+                  // print(number.phoneNumber);
                 },
                 onInputValidated: (bool value) {
-                  vali = value;
-                  print(vali);
+                  validation = value;
+                  // print(validation);
                 },
-                selectorConfig: SelectorConfig(
+                selectorConfig: const SelectorConfig(
                   selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
                 ),
                 ignoreBlank: false,
                 autoValidateMode: AutovalidateMode.disabled,
-                selectorTextStyle: TextStyle(color: Colors.black),
+                selectorTextStyle: const TextStyle(color: Colors.black),
                 initialValue: number,
                 textFieldController: controller,
                 formatInput: true,
                 keyboardType:
-                TextInputType.numberWithOptions(signed: true, decimal: true),
-                inputBorder: OutlineInputBorder(),
+                const TextInputType.numberWithOptions(signed: true, decimal: true),
+                inputBorder: const OutlineInputBorder(),
                 onSaved: (PhoneNumber number) {
-                  print('On Saved: $number');
+                  // print('On Saved: $number');
                 },
               ),
               Row(
@@ -70,18 +70,19 @@ class _addContactNumState extends State<addContactNum>{
                   ElevatedButton(
                     onPressed: () async {
                       formKey.currentState?.validate();
-                      if (vali){
+                      if (validation){
                         formKey.currentState?.save();
                         //_navigateToAddContacts(context);
                         await ref.set({
                           "email": user.email,
-                          "tel": phnum,
+                          "tel": phoneNumber,
                         });
-                        _navigateToHomePage(context);
+                        if(context.mounted) {
+                          _navigateToHomePage(context);
+                        }
                       }
-
                     },
-                    child: Text('Done'),
+                    child: const Text('Done'),
                   ),
                   const Spacer(flex: 1,)
                 ],
@@ -94,7 +95,7 @@ class _addContactNumState extends State<addContactNum>{
   }
 
   void _navigateToHomePage(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => homePage()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomePage()));
   }
 
   void getPhoneNumber(String phoneNumber) async {

@@ -2,9 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
-import 'addContactNum.dart';
+import 'add_contact_number.dart';
 
 class AddContacts extends StatefulWidget {
+  const AddContacts({super.key});
+
   @override
   State<AddContacts> createState() => _AddContactsState();
 }
@@ -35,12 +37,12 @@ class _AddContactsState extends State<AddContacts> {
               children:  <Widget>[
                 const SizedBox(height: 10),
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     border: Border.all(),
                   ),
-                  child: Center(
-                    child: Text('sddf'),
+                  child: const Center(
+                    child: Text('Enter Contact Number'),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -123,6 +125,6 @@ class _AddContactsState extends State<AddContacts> {
     );
   }
   void _navigateToAddContactNum(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => addContactNum()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AddContactNum()));
   }
 }
