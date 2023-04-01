@@ -8,7 +8,7 @@ import 'package:safedrive/screens/home_page_screens/mainPage.dart';
 import 'package:safedrive/screens/fatigue_test_screens/testFatigue.dart';
 import 'package:safedrive/screens/login_screens/loginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 List<CameraDescription> camera;
 
