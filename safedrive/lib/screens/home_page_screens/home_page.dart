@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:safedrive/screens/fatigue_detection_screens/camera_screen.dart';
-import 'package:safedrive/screens/fatigue_test_screens/testFatigue.dart';
+import 'package:safedrive/screens/fatigue_test_screens/test_fatigue.dart';
 import 'package:safedrive/screens/maps_screen/maps_screen.dart';
 import 'package:safedrive/utils/util_functions.dart';
-import '../emergency_contacts_screens/AddContacts.dart';
+
+import '../emergency_contacts_screens/add_contacts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -127,7 +128,7 @@ class _HomePageState extends State<HomePage> {
               ),
               GestureDetector(
                 onTap: () {
-                  UtilFunction.navigateTo(context,  RestStopScreen());
+                  UtilFunction.navigateTo(context, const RestStopScreen());
                 },
                 child: Container(
                   height: 300,

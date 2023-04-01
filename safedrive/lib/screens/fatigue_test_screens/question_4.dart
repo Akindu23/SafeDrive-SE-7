@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: QuizPage4(),
+      home: const QuizPage4(),
     );
   }
 }
@@ -23,18 +25,20 @@ class MyApp extends StatelessWidget {
 //---------------------- QUESTION 4 ----------------------------------------//
 
 class QuizPage4 extends StatefulWidget {
+  const QuizPage4({super.key});
+
   @override
-  _QuizPage4State createState() => _QuizPage4State();
+  State<QuizPage4> createState() => _QuizPage4State();
 }
 
 class _QuizPage4State extends State<QuizPage4> {
-  Color _circleColor = Color.fromARGB(255, 0, 38, 255);
+  Color _circleColor = const Color.fromARGB(255, 0, 38, 255);
 
   @override
   void initState() {
     super.initState();
     // Start a timer to change the color of the circle after 5 seconds
-    Timer(Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 5), () {
       setState(() {
         _circleColor = Colors.yellow;
       });
@@ -44,58 +48,58 @@ class _QuizPage4State extends State<QuizPage4> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+
       //remove this part - previous page navigation
       appBar: AppBar(
         automaticallyImplyLeading: false, // disable the default back button
         backgroundColor: Colors.white,
         leading:IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.grey),
+          icon: const Icon(Icons.arrow_back, color: Colors.grey),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      
+
       body: Container(
         color: Colors.white,
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 30.0), // add some space here
+            const SizedBox(height: 30.0), // add some space here
             Container(
               alignment: Alignment.topRight,
               child: Container(
-              width: 150.0,
-              decoration: BoxDecoration(
-                color: Color(0xff000730),
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-              alignment: Alignment.centerRight,
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Center(
-                  child: Text(
-                    'Question  04',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
+                width: 150.0,
+                decoration: BoxDecoration(
+                  color: const Color(0xff000730),
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                alignment: Alignment.centerRight,
+                child: const Align(
+                  alignment: Alignment.topRight,
+                  child: Center(
+                    child: Text(
+                      'Question  04',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                      ),
                     ),
                   ),
                 ),
               ),
-             ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Click the Next button when you see the colour change',
                     style: TextStyle(
                       color: Color(0xff000730),
@@ -103,7 +107,7 @@ class _QuizPage4State extends State<QuizPage4> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 50.0),
+                  const SizedBox(height: 50.0),
                   Container(
                     width: 150,
                     height: 150,
@@ -112,22 +116,21 @@ class _QuizPage4State extends State<QuizPage4> {
                       color: _circleColor,
                     ),
                   ),
-                  SizedBox(height: 70.0),
+                  const SizedBox(height: 70.0),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(30.0),
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => QuizPage5()),
+                          MaterialPageRoute(builder: (context) => const QuizPage5()),
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xff000730),
-                        onPrimary: Colors.white,
-                        padding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
+                        foregroundColor: Colors.white, backgroundColor: const Color(0xff000730),
+                        padding: const EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Next',
                         style: TextStyle(fontSize: 20.0),
                       ),
@@ -148,22 +151,24 @@ class _QuizPage4State extends State<QuizPage4> {
 
 
 class QuizPage5 extends StatelessWidget {
+  const QuizPage5({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+
       //remove this part - previous page navigation
       appBar: AppBar(
         automaticallyImplyLeading: false, // disable the default back button
         backgroundColor: Colors.white,
         leading:IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.grey),
+          icon: const Icon(Icons.arrow_back, color: Colors.grey),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      
+
     );
   }
 }
-  
+
  

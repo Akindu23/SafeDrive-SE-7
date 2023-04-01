@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/material/checkbox.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:safedrive/screens/login_screens/signupScreenOne.dart';
-import 'package:safedrive/screens/login_screens/signupScreenTwo.dart';
-import 'package:safedrive/screens/login_screens/ForgotPasswordPage.dart';
 
-class loginScreen extends StatefulWidget {
-  final VoidCallback showSignupScreenOne;
-  const loginScreen({Key? key,required this.showSignupScreenOne}) : super(key: key);
-    @override
-  _LoginScreenState createState() => _LoginScreenState();
+class SignupScreenOne extends StatefulWidget {
+  const SignupScreenOne({super.key});
+
+  @override
+  State<SignupScreenOne> createState() => _SignupScreenOneState();
 }
 
-class _LoginScreenState extends State<loginScreen> {
+class _SignupScreenOneState extends State<SignupScreenOne> {
 
   //test controllers
   final _emailController = TextEditingController();
@@ -22,8 +18,8 @@ class _LoginScreenState extends State<loginScreen> {
   Future signIn() async{
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(
-        email: _emailController.text.trim() ,
-        password: _passwordController.text.trim(),
+      email: _emailController.text.trim() ,
+      password: _passwordController.text.trim(),
     );
   }
 
@@ -40,16 +36,16 @@ class _LoginScreenState extends State<loginScreen> {
     return Container(
       alignment: Alignment.centerLeft,
       child: Row(
-          children: [
-            Text("Sign In",
-              style: TextStyle(
-                fontSize: 34,
-                fontWeight: FontWeight.bold,
-                color: Color(0xff000730),
-              ),
+        children: const [
+          Text("Sign Up",
+            style: TextStyle(
+              fontSize: 34,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff000730),
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -58,15 +54,15 @@ class _LoginScreenState extends State<loginScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          "Email",
+        const Text(
+          "First Name",
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -74,7 +70,7 @@ class _LoginScreenState extends State<loginScreen> {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(50),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 6,
@@ -85,17 +81,17 @@ class _LoginScreenState extends State<loginScreen> {
           child: TextField(
             controller: _emailController,
             keyboardType: TextInputType.emailAddress,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black87,
             ),
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
-                  Icons.email,
+                  Icons.account_circle_rounded,
                   color: Color(0xff1493ff),
                 ),
-                hintText: "Email",
+                hintText: "First Name",
                 hintStyle: TextStyle(
                   color: Colors.black38,
                 )),
@@ -109,15 +105,15 @@ class _LoginScreenState extends State<loginScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          "Password",
+        const Text(
+          "Last Name",
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -125,7 +121,7 @@ class _LoginScreenState extends State<loginScreen> {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(50),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 6,
@@ -136,17 +132,17 @@ class _LoginScreenState extends State<loginScreen> {
           child: TextField(
             controller: _passwordController,
             obscureText: true,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black87,
             ),
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
-                  Icons.lock,
+                  Icons.account_circle_rounded,
                   color: Color(0xff1493ff),
                 ),
-                hintText: "Password",
+                hintText: "Last Name",
                 hintStyle: TextStyle(
                   color: Colors.black38,
                 )),
@@ -156,131 +152,113 @@ class _LoginScreenState extends State<loginScreen> {
     );
   }
 
-  Widget buildForgetPassBtn() {
-
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context){
-          return ForgotPasswordPage();
-        }));
-      },
-      child: Container(
-        alignment: Alignment.centerRight,
-            child: Text(
-              "Forgot password?",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            )
-      ),
-    );
-  }
-
-  // Widget buildRememberCb() {
-  //   return Container(
-  //     height: 20,
-  //     child: Row(
-  //       children: <Widget>[
-  //         Theme(
-  //             data: ThemeData(unselectedWidgetColor: Colors.white),
-  //             child: Checkbox(
-  //               value: isRememberMe,
-  //               checkColor: Colors.green,
-  //               activeColor: Colors.white,
-  //               onChanged: (value) {
-  //                 setState(() {
-  //                   isRememberMe = value!;
-  //                 });
-  //               },
-  //             )),
-  //         Text(
-  //           "Remember me",
-  //           style: TextStyle(
-  //             color: Colors.white,
-  //             fontWeight: FontWeight.bold,
-  //           ),
-  //         )
-  //       ],
-  //     ),
-  //   );
-  // }
-
-Widget buildLoginBtn(){
-    return GestureDetector(
-        onTap: signIn,
-        child: Container(
-          padding: EdgeInsets.all(20),
+  Widget buildMobNumber() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const Text(
+          "Mobile Number",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-            color: Color(0xff000730),
-            borderRadius: BorderRadius.circular(50),
-              boxShadow: [
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(50),
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 6,
                   offset: Offset(0, 2),
                 )
-              ]
-          ),
-          child: Center(
-            child: Text("Sign In",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              ]),
+          height: 60,
+          child: TextField(
+            controller: _passwordController,
+            obscureText: true,
+            style: const TextStyle(
+              color: Colors.black87,
             ),
+            decoration: const InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(top: 14),
+                prefixIcon: Icon(
+                  Icons.phone,
+                  color: Color(0xff1493ff),
+                ),
+                hintText: "Mobile Number",
+                hintStyle: TextStyle(
+                  color: Colors.black38,
+                )),
           ),
         ),
+      ],
     );
-}
-
-  Widget buildGoogleLogin(){
-   return Row(
-     mainAxisAlignment: MainAxisAlignment.center,
-     children: [
-       Container(
-         child: Image(image: AssetImage("assets/images/googleLogo.png"),
-          height: 30,
-           width: 30,
-         ),
-       ),
-       SizedBox(width: 10,),
-       Text("Sign in with google",style: TextStyle(
-          fontSize: 20,
-         color: Colors.white,
-         fontWeight: FontWeight.w500,
-        ),
-       ),
-     ],
-   );
   }
 
 
-  Widget buildSignUpBtn() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Don\'t have an account? ",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
+
+  Widget buildLoginBtn(){
+    return GestureDetector(
+      onTap: signIn,
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+            color: const Color(0xff000730),
+            borderRadius: BorderRadius.circular(50),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 6,
+                offset: Offset(0, 2),
+              )
+            ]
+        ),
+        child: const Center(
+          child: Text("Sign Up",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        GestureDetector(
-          onTap:
-           widget.showSignupScreenOne,
-          child: Text("Sign Up",
+      ),
+    );
+  }
+
+
+
+  Widget buildSignUpBtn() {
+    return GestureDetector(
+      // onTap: () => print("Sign Up Pressed"),
+      child: RichText(
+        text: const TextSpan(children: [
+          TextSpan(
+            text: "Already have an account ? ",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          TextSpan(
+            text: "Sign In",
             style: TextStyle(
               color: Color(0xff000730),
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
-          ),
-        ),
-      ],
+          )
+        ]),
+      ),
     );
   }
 
@@ -295,7 +273,7 @@ Widget buildLoginBtn(){
               Container(
                 height: double.infinity,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -306,22 +284,20 @@ Widget buildLoginBtn(){
                           Color(0xff2e93ff),
                         ])),
                 child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(
                     horizontal: 25,
                     vertical: 25,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(height: 50,),
-                      Container(
-                        child: Image(image: AssetImage("assets/images/safedrivelogo.png"),
-                          height: 100,
-                          width: 100,
-                        ),
+                      const SizedBox(height: 50,),
+                      const Image(image: AssetImage("assets/images/safedrivelogo.png"),
+                        height: 100,
+                        width: 100,
                       ),
-                      Text(
+                      const Text(
                         "SafeDrive",
                         style: TextStyle(
                           color: Color(0xff000730),
@@ -329,24 +305,22 @@ Widget buildLoginBtn(){
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 35,
                       ),
                       buildTextSignUp(),
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                       buildEmail(),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       buildPassword(),
-                      SizedBox(height: 10,),
-                      buildForgetPassBtn(),
-                      // buildRememberCb(),
-                      SizedBox(height: 25,),
+                      const SizedBox(height: 25,),
+                      buildMobNumber(),
+                      const SizedBox(height: 50,),
                       buildLoginBtn(),
-                      SizedBox(height: 25,),
-                      buildGoogleLogin(),
-                      SizedBox(height: 25,),
+                      const SizedBox(height: 25,),
+                      const SizedBox(height: 25,),
                       buildSignUpBtn(),
                     ],
                   ),

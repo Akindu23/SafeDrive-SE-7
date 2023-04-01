@@ -28,7 +28,7 @@ class _CameraScreenState extends State<CameraScreen> {
     loadModel();
 
     //Resets the alarm counter every 30 seconds
-    Timer.periodic(Duration(seconds: 30), (timer) {
+    Timer.periodic(const Duration(seconds: 30), (timer) {
       setState(() {
         alarmCounter = 0;
       });
@@ -57,16 +57,16 @@ class _CameraScreenState extends State<CameraScreen> {
       var prediction = await Tflite.runModelOnFrame(bytesList: cameraImage!.planes.map((plane) {
         return plane.bytes;
       }).toList(),
-      imageHeight: cameraImage!.height,
-      imageWidth: cameraImage!.width,
-      imageMean: 127.5,
-      imageStd: 127.5,
-      rotation: 90,
-      numResults: 2,
-      threshold: 0.1,
-      asynch: true
+          imageHeight: cameraImage!.height,
+          imageWidth: cameraImage!.width,
+          imageMean: 127.5,
+          imageStd: 127.5,
+          rotation: 90,
+          numResults: 2,
+          threshold: 0.1,
+          asynch: true
       );
-      prediction!.forEach((element) {
+      for (var element in prediction!) {
         setState(() {
           output = element['label'];
           if (output == '1 Fatigue') {
@@ -77,19 +77,19 @@ class _CameraScreenState extends State<CameraScreen> {
             player.play(
               AssetSource('alarm.mp3'),
             );
-            //Puase alarm after 5 seconds
-            Timer(Duration(seconds: 5), () => player.pause());
+            //Pause alarm after 5 seconds
+            Timer(const Duration(seconds: 5), () => player.pause());
             fatigueCounter = 0;
             alarmCounter++;
           }
         });
-      });
+      }
     }
   }
   loadModel() async {
     await Tflite.loadModel(
-      model: "assets/model.tflite",
-      labels: "assets/labels.txt"
+        model: "assets/model.tflite",
+        labels: "assets/labels.txt"
     );
   }
   @override
@@ -98,29 +98,21 @@ class _CameraScreenState extends State<CameraScreen> {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 40.0,),
-          Padding(padding: EdgeInsets.all(20),
-            child: Container(
-              height: size.height*0.7,
-              width: size.width,
-              child: !cameraController!.value.isInitialized?
-              Container():
-              AspectRatio(aspectRatio: cameraController!.value.aspectRatio,
-              child: CameraPreview(cameraController!),)
+          const SizedBox(height: 40.0,),
+          Padding(padding: const EdgeInsets.all(20),
+            child: SizedBox(
+                height: size.height*0.7,
+                width: size.width,
+                child: !cameraController!.value.isInitialized?
+                Container():
+                AspectRatio(aspectRatio: cameraController!.value.aspectRatio,
+                  child: CameraPreview(cameraController!),)
             ),
           ),
-          Text(output, style: TextStyle(
+          Text(output, style: const TextStyle(
               color: Colors.black,
               fontSize: 20.0),
           ),
-          // Text(fatigueCounter.toString(), style: TextStyle(
-          //     color: Colors.black,
-          //     fontSize: 20.0),
-          // ),
-          // Text(alarmCounter.toString(), style: TextStyle(
-          //     color: Colors.black,
-          //     fontSize: 20.0),
-          // )
         ],
       ),
     );

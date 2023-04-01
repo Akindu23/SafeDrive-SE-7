@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class TrianglePainter extends CustomPainter {
@@ -39,8 +39,8 @@ class StarPainter extends CustomPainter {
     final double halfWidth = size.width / 2.0;
     final double halfHeight = size.height / 2.0;
     final double radius = halfWidth < halfHeight ? halfWidth : halfHeight;
-    final double degreesPerPoint = 360.0 / 5;
-    final double radiansPerPoint = degreesPerPoint * pi / 180.0;
+    const double degreesPerPoint = 360.0 / 5;
+    const double radiansPerPoint = degreesPerPoint * pi / 180.0;
 
     double angle = -pi / 2.0;
     double x, y;
@@ -58,14 +58,14 @@ class StarPainter extends CustomPainter {
     path.close();
 
     final paint = Paint()..color = color;
-    
+
     canvas.translate(size.width / 2, size.height / 2);
     canvas.rotate(pi);
     canvas.translate(-size.width / 2, -size.height / 2);
 
     canvas.drawPath(path, paint);
   }
-    
+
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
@@ -96,6 +96,8 @@ int countTriangles(List<int> shapes) {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     //triangle count
@@ -107,21 +109,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Shapes Grid'),
+          title: const Text('Shapes Grid'),
         ),
         body: Container(
           color: Colors.white,
-          padding: EdgeInsets.all(20.0), 
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Count the number of Triangles',
                 style: TextStyle(color: Color(0xff000730), fontSize: 35.0, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 30.0), 
+              const SizedBox(height: 30.0),
               Container(
-                padding: EdgeInsets.all(20.0), 
+                padding: const EdgeInsets.all(20.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10.0),
@@ -130,7 +132,7 @@ class MyApp extends StatelessWidget {
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 5,
                       blurRadius: 7,
-                      offset: Offset(0, 3), 
+                      offset: const Offset(0, 3),
                     ),
                   ],
                 ),
@@ -139,7 +141,7 @@ class MyApp extends StatelessWidget {
                   height: 250,
                   child: GridView.builder(
                     itemCount: 25,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 5,
                       mainAxisSpacing: 20.0,
                       crossAxisSpacing: 20.0,
@@ -150,14 +152,14 @@ class MyApp extends StatelessWidget {
                       switch (shapeIndex) {
                         case 0:
                           return Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Color(0xff000730),
                               shape: BoxShape.circle,
                             ),
                           );
                         case 1:
                           return Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Color(0xff000730),
                               shape: BoxShape.rectangle,
                             ),
@@ -165,27 +167,27 @@ class MyApp extends StatelessWidget {
                         case 2:
                           return CustomPaint(
                             painter: TrianglePainter(
-                              color: Color(0xff000730),
+                              color: const Color(0xff000730),
                             ),
                           );
                         case 3:
                           return CustomPaint(
                             painter: StarPainter(
-                              color: Color(0xff000730),
+                              color: const Color(0xff000730),
                             ),
                           );
                       }
-                       return Container();
+                      return Container();
                     },
                   ),
                 ),
               ),
-              SizedBox( height: 20.0 ),
+              const SizedBox( height: 20.0 ),
               Text(
-                  'Number of triangles: $triangles',
-                   style: TextStyle( color: Color(0xff000730), fontSize: 25.0, fontWeight: FontWeight.bold,), 
-            ),
-           ],
+                'Number of triangles: $triangles',
+                style: const TextStyle( color: Color(0xff000730), fontSize: 25.0, fontWeight: FontWeight.bold,),
+              ),
+            ],
           ),
         ),
       ),
