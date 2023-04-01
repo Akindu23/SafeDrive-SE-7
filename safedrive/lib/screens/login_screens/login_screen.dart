@@ -18,8 +18,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Future signIn() async{
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(
-        email: _emailController.text.trim() ,
-        password: _passwordController.text.trim(),
+      email: _emailController.text.trim() ,
+      password: _passwordController.text.trim(),
     );
   }
 
@@ -36,16 +36,16 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       alignment: Alignment.centerLeft,
       child: Row(
-          children: const [
-            Text("Sign In",
-              style: TextStyle(
-                fontSize: 34,
-                fontWeight: FontWeight.bold,
-                color: Color(0xff000730),
-              ),
+        children: const [
+          Text("Sign In",
+            style: TextStyle(
+              fontSize: 34,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff000730),
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -196,52 +196,52 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-Widget buildLoginBtn(){
+  Widget buildLoginBtn(){
     return GestureDetector(
-        onTap: signIn,
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
+      onTap: signIn,
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
             color: const Color(0xff000730),
             borderRadius: BorderRadius.circular(50),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 6,
-                  offset: Offset(0, 2),
-                )
-              ]
-          ),
-          child: const Center(
-            child: Text("Sign In",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 6,
+                offset: Offset(0, 2),
+              )
+            ]
+        ),
+        child: const Center(
+          child: Text("Sign In",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
+      ),
     );
-}
+  }
 
   Widget buildGoogleLogin(){
-   return Row(
-     mainAxisAlignment: MainAxisAlignment.center,
-     children: const [
-       Image(image: AssetImage("assets/images/googleLogo.png"),
-        height: 30,
-         width: 30,
-       ),
-       SizedBox(width: 10,),
-       Text("Sign in with google",style: TextStyle(
-          fontSize: 20,
-         color: Colors.white,
-         fontWeight: FontWeight.w500,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: const [
+        Image(image: AssetImage("assets/images/googleLogo.png"),
+          height: 30,
+          width: 30,
         ),
-       ),
-     ],
-   );
+        SizedBox(width: 10,),
+        Text("Sign in with google",style: TextStyle(
+          fontSize: 20,
+          color: Colors.white,
+          fontWeight: FontWeight.w500,
+        ),
+        ),
+      ],
+    );
   }
 
 
@@ -251,12 +251,12 @@ Widget buildLoginBtn(){
       child: RichText(
         text: const TextSpan(children: [
           TextSpan(
-              text: "Don't have an account? ",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
+            text: "Don't have an account? ",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
           ),
           TextSpan(
             text: "Sign Up",

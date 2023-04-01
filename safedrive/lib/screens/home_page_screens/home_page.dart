@@ -88,79 +88,79 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 24,
               ),
-          GestureDetector(
-            onTap: () {
-              UtilFunction.navigateTo(context, TestFatigue());
-            },
-              child: Container(
-                height: 300,
-                width: 350,
-                decoration: BoxDecoration(
-                    color: const Color(0xffFAFAFA),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      )
-                    ]),
-                child: Column(
-                  children: const [
-                    Image(
-                      image: AssetImage("assets/images/test.png"),
-                      height: 250,
-                      width: 250,
-                    ),
-                    Text(
-                      "Fatigue Test",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: () {
+                  UtilFunction.navigateTo(context, TestFatigue());
+                },
+                child: Container(
+                  height: 300,
+                  width: 350,
+                  decoration: BoxDecoration(
+                      color: const Color(0xffFAFAFA),
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                          offset: Offset(0, 2),
+                        )
+                      ]),
+                  child: Column(
+                    children: const [
+                      Image(
+                        image: AssetImage("assets/images/test.png"),
+                        height: 250,
+                        width: 250,
                       ),
-                    ),
-                  ],
+                      Text(
+                        "Fatigue Test",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-          ),
               const SizedBox(
                 height: 24,
               ),
-          GestureDetector(
-            onTap: () {
-              UtilFunction.navigateTo(context, const RestStopScreen());
-            },
-              child: Container(
-                height: 300,
-                width: 350,
-                decoration: BoxDecoration(
-                    color: const Color(0xffFAFAFA),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      )
-                    ]),
-                child: Column(
-                  children: const [
-                    Image(
-                      image: AssetImage("assets/images/restshop.png"),
-                      height: 250,
-                      width: 250,
-                    ),
-                    Text(
-                      "Nearest Rest Stop",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: () {
+                  UtilFunction.navigateTo(context, const RestStopScreen());
+                },
+                child: Container(
+                  height: 300,
+                  width: 350,
+                  decoration: BoxDecoration(
+                      color: const Color(0xffFAFAFA),
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                          offset: Offset(0, 2),
+                        )
+                      ]),
+                  child: Column(
+                    children: const [
+                      Image(
+                        image: AssetImage("assets/images/restshop.png"),
+                        height: 250,
+                        width: 250,
                       ),
-                    ),
-                  ],
+                      Text(
+                        "Nearest Rest Stop",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-          ),
               const SizedBox(
                 height: 24,
               ),

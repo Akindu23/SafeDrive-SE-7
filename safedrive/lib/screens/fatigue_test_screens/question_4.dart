@@ -48,7 +48,7 @@ class _QuizPage4State extends State<QuizPage4> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+
       //remove this part - previous page navigation
       appBar: AppBar(
         automaticallyImplyLeading: false, // disable the default back button
@@ -58,7 +58,7 @@ class _QuizPage4State extends State<QuizPage4> {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      
+
       body: Container(
         color: Colors.white,
         padding: const EdgeInsets.all(20.0),
@@ -69,26 +69,26 @@ class _QuizPage4State extends State<QuizPage4> {
             Container(
               alignment: Alignment.topRight,
               child: Container(
-              width: 150.0,
-              decoration: BoxDecoration(
-                color: const Color(0xff000730),
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-              alignment: Alignment.centerRight,
-              child: const Align(
-                alignment: Alignment.topRight,
-                child: Center(
-                  child: Text(
-                    'Question  04',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
+                width: 150.0,
+                decoration: BoxDecoration(
+                  color: const Color(0xff000730),
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                alignment: Alignment.centerRight,
+                child: const Align(
+                  alignment: Alignment.topRight,
+                  child: Center(
+                    child: Text(
+                      'Question  04',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                      ),
                     ),
                   ),
                 ),
               ),
-             ),
             ),
             const SizedBox(height: 20.0),
             Container(
@@ -156,7 +156,7 @@ class QuizPage5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+
       //remove this part - previous page navigation
       appBar: AppBar(
         automaticallyImplyLeading: false, // disable the default back button
@@ -166,9 +166,9 @@ class QuizPage5 extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      
+
     );
   }
 }
-  
+
  
