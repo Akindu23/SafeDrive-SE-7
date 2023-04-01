@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/material/checkbox.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:safedrive/signupScreenOne.dart';
-import 'package:safedrive/signupScreenTwo.dart';
+import 'package:safedrive/screens/login_screens/signupScreenOne.dart';
+import 'package:safedrive/screens/login_screens/signupScreenTwo.dart';
+import 'package:safedrive/screens/login_screens/ForgotPasswordPage.dart';
 
 class loginScreen extends StatefulWidget {
   final VoidCallback showSignupScreenOne;
@@ -17,8 +18,6 @@ class _LoginScreenState extends State<loginScreen> {
   //test controllers
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
-
 
   Future signIn() async{
     await FirebaseAuth.instance
@@ -158,17 +157,24 @@ class _LoginScreenState extends State<loginScreen> {
   }
 
   Widget buildForgetPassBtn() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: TextButton(
-          onPressed: () => print("Forgot Password pressed"),
-          child: Text(
-            "Forgot password?",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          )),
+
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context){
+          return ForgotPasswordPage();
+        }));
+      },
+      child: Container(
+        alignment: Alignment.centerRight,
+            child: Text(
+              "Forgot password?",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            )
+      ),
     );
   }
 
@@ -333,6 +339,7 @@ Widget buildLoginBtn(){
                         height: 20,
                       ),
                       buildPassword(),
+                      SizedBox(height: 10,),
                       buildForgetPassBtn(),
                       // buildRememberCb(),
                       SizedBox(height: 25,),

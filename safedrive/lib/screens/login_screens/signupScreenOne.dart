@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/material/checkbox.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:safedrive/loginScreen.dart';
-import 'package:safedrive/signupScreenTwo.dart';
+
 
 class signupScreenOne extends StatefulWidget {
   final VoidCallback showLoginPage;

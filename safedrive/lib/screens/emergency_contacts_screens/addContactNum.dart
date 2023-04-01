@@ -94,7 +94,7 @@ class _addContactNumState extends State<addContactNum>{
   }
 
   void _navigateToHomePage(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => homePage()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
   }
 
   void getPhoneNumber(String phoneNumber) async {

@@ -1,4 +1,4 @@
-<<<<<<< HEAD:safedrive/lib/signupScreenTwo.dart
+
 // import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 // import 'package:flutter/src/material/checkbox.dart';
@@ -368,7 +368,7 @@
 //     );
 //   }
 // }
-=======
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/material/checkbox.dart';
@@ -705,4 +705,4 @@ class _SignupScreenTwoState extends State<signupScreenTwo> {
     );
   }
 }
->>>>>>> 8642010c560d17b0ac48a9973ad5a53164be73dc:safedrive/lib/screens/login_screens/signupScreenTwo.dart
+
