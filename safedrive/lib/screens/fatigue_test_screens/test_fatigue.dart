@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:safedrive/screens/fatigue_test_screens/question3.dart';
-// import 'package:safedrive/screens/fatigue_test_screens/testFatigue_Q1.dart';
+import 'package:safedrive/screens/fatigue_test_screens/question1.dart';
 
 class TestFatigue extends StatefulWidget {
+  const TestFatigue({super.key});
+
   @override
-  _TestFatigueState createState() => _TestFatigueState();
+  State<TestFatigue> createState() => _TestFatigueState();
 }
 
 class _TestFatigueState extends State<TestFatigue> {
@@ -14,11 +15,11 @@ class _TestFatigueState extends State<TestFatigue> {
       //onTap: signIn,
       child: Container(
         width: 200,
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-            color: Color(0xff000730),
+            color: const Color(0xff000730),
             borderRadius: BorderRadius.circular(50),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black26,
                 blurRadius: 6,
@@ -26,7 +27,7 @@ class _TestFatigueState extends State<TestFatigue> {
               )
             ]
         ),
-        child: Center(
+        child: const Center(
           child: Text("Start",
             style: TextStyle(
               color: Colors.white,
@@ -42,81 +43,78 @@ class _TestFatigueState extends State<TestFatigue> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: GestureDetector(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      // SizedBox(height: 0,),
-                      const Text(
-                        "Let's Test Your" +"\n" +"Fatigue Level",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xff000730),
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Container(
-                        child: Image(image: AssetImage("assets/images/testFatigue.png"),
-                          height: 250,
-                          width: 250,
-                        ),
-                      ),
-                      Text(
-                        "Did you know ?"+"\n",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xff000730),
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "Fatigue crashes are twice as likely to be fatal than any other crashes."+"\n",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xff000730),
-                          fontSize: 28,
-                          //fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const Text(
-                        "You can't break if you are asleep.",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xff000730),
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 30.0),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(30.0),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(builder: (context) => TestFatigue_Q1()),
-                            // );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Color(0xff000730),
-                            onPrimary: Colors.white,
-                            padding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
-                          ),
-                          child: Text(
-                            'Start',
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                        ),
-                      ),
-                    ],
+        body: AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle.light,
+          child: GestureDetector(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                // SizedBox(height: 0,),
+                const Text(
+                  "Let's Test Your\nFatigue Level",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xff000730),
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              )
-     );
+                const Image(image: AssetImage("assets/images/testFatigue.png"),
+                  height: 250,
+                  width: 250,
+                ),
+                const Text(
+                  "Did you know ?" "\n",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xff000730),
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const Text(
+                  "Fatigue related crashes are twice as likely to be fatal than any other crashes." "\n",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xff000730),
+                    fontSize: 28,
+                    //fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const Text(
+                  "You can't brake if you are asleep.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xff000730),
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 30.0),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(30.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Question1()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white, backgroundColor: const Color(0xff000730),
+                      padding: const EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
+                    ),
+                    child: const Text(
+                      'Start',
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )
+    );
   }
 }
 

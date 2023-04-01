@@ -7,6 +7,8 @@ class Question2 extends StatefulWidget {
 }
 
 class _Question2State extends State<Question2> {
+  get myFocusNode => null;
+
 
   @override
   Widget build(BuildContext context) {
@@ -65,37 +67,30 @@ class _Question2State extends State<Question2> {
                       width: 250,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                        border: UnderlineInputBorder(),
-                        //labelText: 'Enter your username',
-                      ),
-                    ),
-                  ),
-/*
-                  TextFormField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        prefixIcon: Padding(
-                          padding: EdgeInsets.all(0.0),
-                          child: Icon(Icons.person,
-                              size: 40.0, color: Colors.white),
+
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: 100,
+                        child: TextField(
+                          focusNode: myFocusNode,
+                          style: TextStyle(fontSize: 25),
+                          textAlign: TextAlign.center,
                         ),
-                        hintText: "Input your opinion",
-                        hintStyle: TextStyle(color: Colors.white30),
-                        border: OutlineInputBorder(
-                            borderRadius:
-                            BorderRadius.all(new Radius.circular(25.0))),
-                        labelStyle: TextStyle(color: Colors.white)),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25.0,
-                    ),
+                      ),
+                      Text(
+                        "hours",
+                        style: TextStyle(
+                          color: Color(0xff000730),
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
-*/
+
                   SizedBox(height: 70.0),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(30.0),
