@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/material/checkbox.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:safedrive/loginScreen.dart';
+import 'package:safedrive/signupScreenTwo.dart';
 
 class signupScreenOne extends StatefulWidget {
+  final VoidCallback showLoginPage;
+  const signupScreenOne({Key? key,required this.showLoginPage}) : super(key: key);
+
   @override
   _SignupScreenOneState createState() => _SignupScreenOneState();
 }
@@ -11,21 +16,50 @@ class signupScreenOne extends StatefulWidget {
 class _SignupScreenOneState extends State<signupScreenOne> {
 
   //test controllers
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+   final _emailController = TextEditingController();
+   final _passwordController = TextEditingController();
+  // final _firstNameController = TextEditingController();
+  // final _lastNameController = TextEditingController();
+  // final _mobileNumberController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
-  Future signIn() async{
-    await FirebaseAuth.instance
-        .signInWithEmailAndPassword(
-      email: _emailController.text.trim() ,
-      password: _passwordController.text.trim(),
-    );
+  Future signUp() async{
+    if(passwordConfirmed()){
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text.trim() ,
+          password: _passwordController.text.trim(),
+      );
+    }
   }
+
+
+
+  bool passwordConfirmed() {
+    if (
+    _passwordController.text.trim() == _confirmPasswordController.text.trim()){
+      return true;
+    }
+    else{
+      return false;
+    }
+
+  }
+
+   // Future signUp() async{
+   //   await FirebaseAuth.instance.createUserWithEmailAndPassword(
+   //               email: _emailController.text.trim(),
+   //               password: _passwordController.text.trim(),
+   //   );
+   // }
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    // _firstNameController.dispose();
+    // _lastNameController.dispose();
+    // _mobileNumberController.dispose();
     super.dispose();
   }
 
@@ -54,7 +88,7 @@ class _SignupScreenOneState extends State<signupScreenOne> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          "First Name",
+          "Email",
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
@@ -87,12 +121,12 @@ class _SignupScreenOneState extends State<signupScreenOne> {
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
-                  Icons.account_circle_rounded,
+                  Icons.email,
                   color: Color(0xff1493ff),
                 ),
-                hintText: "First Name",
+                hintText: "Email",
                 hintStyle: TextStyle(
-                  color: Colors.black38,
+                  color: Colors.black54,
                 )),
           ),
         ),
@@ -105,7 +139,7 @@ class _SignupScreenOneState extends State<signupScreenOne> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          "Last Name",
+          "Password",
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
@@ -138,10 +172,10 @@ class _SignupScreenOneState extends State<signupScreenOne> {
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
-                  Icons.account_circle_rounded,
+                  Icons.lock,
                   color: Color(0xff1493ff),
                 ),
-                hintText: "Last Name",
+                hintText: "Password",
                 hintStyle: TextStyle(
                   color: Colors.black38,
                 )),
@@ -151,12 +185,12 @@ class _SignupScreenOneState extends State<signupScreenOne> {
     );
   }
 
-  Widget buildMobNumber() {
+  Widget buildConfirmPassword() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          "Mobile Number",
+          "Confirm Password",
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
@@ -180,7 +214,7 @@ class _SignupScreenOneState extends State<signupScreenOne> {
               ]),
           height: 60,
           child: TextField(
-            controller: _passwordController,
+            controller: _confirmPasswordController,
             obscureText: true,
             style: TextStyle(
               color: Colors.black87,
@@ -189,10 +223,10 @@ class _SignupScreenOneState extends State<signupScreenOne> {
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
-                  Icons.phone,
+                  Icons.lock,
                   color: Color(0xff1493ff),
                 ),
-                hintText: "Mobile Number",
+                hintText: "Confirm Password",
                 hintStyle: TextStyle(
                   color: Colors.black38,
                 )),
@@ -206,7 +240,10 @@ class _SignupScreenOneState extends State<signupScreenOne> {
 
   Widget buildLoginBtn(){
     return GestureDetector(
-      onTap: signIn,
+       onTap: signUp,
+         //() {
+      //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=> signupScreenTwo()));
+      // },
       child: Container(
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
@@ -236,28 +273,27 @@ class _SignupScreenOneState extends State<signupScreenOne> {
 
 
   Widget buildSignUpBtn() {
-    return GestureDetector(
-      onTap: () => print("Sign Up Pressed"),
-      child: RichText(
-        text: TextSpan(children: [
-          TextSpan(
-            text: "Already have an account ? ",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-            ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Already have an account? ",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
           ),
-          TextSpan(
-            text: "Sign In",
+        ),
+        GestureDetector(
+          onTap: widget.showLoginPage,
+          child: Text("Sign In",
             style: TextStyle(
               color: Color(0xff000730),
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
-          )
-        ]),
-      ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -317,7 +353,7 @@ class _SignupScreenOneState extends State<signupScreenOne> {
                       ),
                       buildPassword(),
                       SizedBox(height: 25,),
-                      buildMobNumber(),
+                      buildConfirmPassword(),
                       SizedBox(height: 50,),
                       buildLoginBtn(),
                       SizedBox(height: 25,),
