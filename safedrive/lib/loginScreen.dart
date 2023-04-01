@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/material/checkbox.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:safedrive/signupScreenOne.dart';
+import 'package:safedrive/signupScreenTwo.dart';
 
 class loginScreen extends StatefulWidget {
-  @override
+  final VoidCallback showSignupScreenOne;
+  const loginScreen({Key? key,required this.showSignupScreenOne}) : super(key: key);
+    @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
@@ -13,6 +17,8 @@ class _LoginScreenState extends State<loginScreen> {
   //test controllers
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+
 
   Future signIn() async{
     await FirebaseAuth.instance
@@ -166,34 +172,34 @@ class _LoginScreenState extends State<loginScreen> {
     );
   }
 
-  Widget buildRememberCb() {
-    return Container(
-      height: 20,
-      child: Row(
-        children: <Widget>[
-          Theme(
-              data: ThemeData(unselectedWidgetColor: Colors.white),
-              child: Checkbox(
-                value: isRememberMe,
-                checkColor: Colors.green,
-                activeColor: Colors.white,
-                onChanged: (value) {
-                  setState(() {
-                    isRememberMe = value!;
-                  });
-                },
-              )),
-          Text(
-            "Remember me",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          )
-        ],
-      ),
-    );
-  }
+  // Widget buildRememberCb() {
+  //   return Container(
+  //     height: 20,
+  //     child: Row(
+  //       children: <Widget>[
+  //         Theme(
+  //             data: ThemeData(unselectedWidgetColor: Colors.white),
+  //             child: Checkbox(
+  //               value: isRememberMe,
+  //               checkColor: Colors.green,
+  //               activeColor: Colors.white,
+  //               onChanged: (value) {
+  //                 setState(() {
+  //                   isRememberMe = value!;
+  //                 });
+  //               },
+  //             )),
+  //         Text(
+  //           "Remember me",
+  //           style: TextStyle(
+  //             color: Colors.white,
+  //             fontWeight: FontWeight.bold,
+  //           ),
+  //         )
+  //       ],
+  //     ),
+  //   );
+  // }
 
 Widget buildLoginBtn(){
     return GestureDetector(
@@ -247,28 +253,28 @@ Widget buildLoginBtn(){
 
 
   Widget buildSignUpBtn() {
-    return GestureDetector(
-      onTap: () => print("Sign Up Pressed"),
-      child: RichText(
-        text: TextSpan(children: [
-          TextSpan(
-              text: "Don\'t have an account? ",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Don\'t have an account? ",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
           ),
-          TextSpan(
-            text: "Sign Up",
+        ),
+        GestureDetector(
+          onTap:
+           widget.showSignupScreenOne,
+          child: Text("Sign Up",
             style: TextStyle(
               color: Color(0xff000730),
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
-          )
-        ]),
-      ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -328,7 +334,7 @@ Widget buildLoginBtn(){
                       ),
                       buildPassword(),
                       buildForgetPassBtn(),
-                      buildRememberCb(),
+                      // buildRememberCb(),
                       SizedBox(height: 25,),
                       buildLoginBtn(),
                       SizedBox(height: 25,),
