@@ -6,6 +6,8 @@ import 'package:google_maps_webservice/places.dart';
 final places = GoogleMapsPlaces(apiKey: "AIzaSyDWiFu9s5jkaasiw3ER6gwohs84MYDMB0E");
 
 class RestStopScreen extends StatefulWidget {
+  const RestStopScreen({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _RestStopScreenState();
@@ -14,7 +16,7 @@ class RestStopScreen extends StatefulWidget {
 
 class _RestStopScreenState extends State<RestStopScreen> {
   late Future<Position> _currentLocation;
-  Set<Marker> _markers = {};
+  final Set<Marker> _markers = {};
 
   @override
   void initState() {
@@ -36,24 +38,24 @@ class _RestStopScreenState extends State<RestStopScreen> {
     return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
   }
 
-  Future<void> _retrieveNearbyRestStops(LatLng _userLocation) async {
-    PlacesSearchResponse _response = await places.searchNearbyWithRadius(
-        Location(_userLocation.latitude, _userLocation.longitude), 5000,
+  Future<void> _retrieveNearbyRestStops(LatLng userLocation) async {
+    PlacesSearchResponse response = await places.searchNearbyWithRadius(
+        Location(userLocation.latitude, userLocation.longitude), 5000,
         type: "cafe");
 
-    Set<Marker> _restStopMarkers = _response.results
+    Set<Marker> restStopMarkers = response.results
         .map((result) => Marker(
         markerId: MarkerId(result.name),
         icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueAzure),
         infoWindow: InfoWindow(
             title: result.name,
-            snippet: "Star Rating: " + (result.rating?.toString() ?? "Not Rated")),
+            snippet: "Star Rating: ${result.rating?.toString() ?? "Not Rated"}"),
         position: LatLng(
             result.geometry.location.lat, result.geometry.location.lng)))
         .toSet();
 
     setState(() {
-      _markers.addAll(_restStopMarkers);
+      _markers.addAll(restStopMarkers);
     });
   }
 
@@ -65,35 +67,35 @@ class _RestStopScreenState extends State<RestStopScreen> {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
             // The user location returned from the snapshot
-            Position? snapshotData = snapshot.data as Position?;
+            Position? snapshotData = snapshot.data;
             if (snapshotData != null) {
-              LatLng _userLocation =
+              LatLng userLocation =
               LatLng(snapshotData.latitude, snapshotData.longitude);
 
               if (_markers.isEmpty) {
-                _retrieveNearbyRestStops(_userLocation);
+                _retrieveNearbyRestStops(userLocation);
               }
 
               return GoogleMap(
                 initialCameraPosition: CameraPosition(
-                  target: _userLocation,
+                  target: userLocation,
                   zoom: 16,
                 ),
                 markers: _markers
                   ..add(Marker(
-                      markerId: MarkerId("User Location"),
-                      infoWindow: InfoWindow(title: "User Location"),
-                      position: _userLocation)),
+                      markerId: const MarkerId("User Location"),
+                      infoWindow: const InfoWindow(title: "User Location"),
+                      position: userLocation)),
               );
             } else {
-              return Center(child: Text("Failed to get user location."));
+              return const Center(child: Text("Failed to get user location."));
             }
           } else {
-            return Center(child: Text("Failed to get user location."));
+            return const Center(child: Text("Failed to get user location."));
           }
         }
         // While the connection is not in the done state yet
-        return Center(child: CircularProgressIndicator());
+        return const Center(child: CircularProgressIndicator());
       },
     );
   }
