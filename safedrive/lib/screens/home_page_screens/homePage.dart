@@ -1,10 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD:safedrive/lib/homePage.dart
 import 'package:safedrive/camera_screen.dart';
 import 'package:safedrive/util_functions.dart';
 import 'testFatigue.dart';
 import 'package:safedrive/testFatigue.dart';
 import 'AddContacts.dart';
+=======
+import 'package:safedrive/screens/fatigue_detection_screens/camera_screen.dart';
+import 'package:safedrive/screens/fatigue_test_screens/testFatigue.dart';
+import 'package:safedrive/screens/maps_screen/maps_screen.dart';
+import 'package:safedrive/utils/util_functions.dart';
+
+import '../emergency_contacts_screens/AddContacts.dart';
+>>>>>>> 8642010c560d17b0ac48a9973ad5a53164be73dc:safedrive/lib/screens/home_page_screens/homePage.dart
 
 class homePage extends StatefulWidget {
   @override
@@ -85,6 +94,7 @@ class _homePageState extends State<homePage> {
               SizedBox(
                 height: 24,
               ),
+<<<<<<< HEAD:safedrive/lib/homePage.dart
               GestureDetector(
                 child: Container(
                   child: Column(
@@ -93,6 +103,25 @@ class _homePageState extends State<homePage> {
                         image: AssetImage("assets/images/test.png"),
                         height: 250,
                         width: 250,
+=======
+          GestureDetector(
+            onTap: () {
+              UtilFunction.navigateTo(context, TestFatigue());
+            },
+              child: Container(
+                child: Column(
+                  children: [
+                    Image(
+                      image: AssetImage("assets/images/test.png"),
+                      height: 250,
+                      width: 250,
+                    ),
+                    Text(
+                      "Fatigue Test",
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+>>>>>>> 8642010c560d17b0ac48a9973ad5a53164be73dc:safedrive/lib/screens/home_page_screens/homePage.dart
                       ),
                       Text(
                         "Fatigue Test",
@@ -117,10 +146,15 @@ class _homePageState extends State<homePage> {
                       ]),
                 ),
               ),
+          ),
               SizedBox(
                 height: 24,
               ),
-              Container(
+          GestureDetector(
+            onTap: () {
+              UtilFunction.navigateTo(context, RestStopScreen());
+            },
+              child: Container(
                 child: Column(
                   children: [
                     Image(
@@ -150,6 +184,7 @@ class _homePageState extends State<homePage> {
                       )
                     ]),
               ),
+          ),
               SizedBox(
                 height: 24,
               ),
@@ -189,39 +224,39 @@ class _homePageState extends State<homePage> {
               SizedBox(
                 height: 24,
               ),
-              Container(
-                child: Column(
-                  children: [
-                    Image(
-                      image: AssetImage("assets/images/history.png"),
-                      height: 250,
-                      width: 250,
-                    ),
-                    Text(
-                      "Journey History",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                height: 300,
-                width: 350,
-                decoration: BoxDecoration(
-                    color: Color(0xffFAFAFA),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      )
-                    ]),
-              ),
-              SizedBox(
-                height: 25,
-              ),
+              // Container(
+              //   child: Column(
+              //     children: [
+              //       Image(
+              //         image: AssetImage("assets/images/history.png"),
+              //         height: 250,
+              //         width: 250,
+              //       ),
+              //       Text(
+              //         "Journey History",
+              //         style: TextStyle(
+              //           fontSize: 22,
+              //           fontWeight: FontWeight.bold,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              //   height: 300,
+              //   width: 350,
+              //   decoration: BoxDecoration(
+              //       color: Color(0xffFAFAFA),
+              //       borderRadius: BorderRadius.circular(20),
+              //       boxShadow: [
+              //         BoxShadow(
+              //           color: Colors.black26,
+              //           blurRadius: 6,
+              //           offset: Offset(0, 2),
+              //         )
+              //       ]),
+              // ),
+              // SizedBox(
+              //   height: 25,
+              // ),
             ],
           ),
         ),

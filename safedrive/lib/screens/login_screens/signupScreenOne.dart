@@ -2,36 +2,64 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/material/checkbox.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:safedrive/signupScreenOne.dart';
+import 'package:safedrive/loginScreen.dart';
 import 'package:safedrive/signupScreenTwo.dart';
 
-class loginScreen extends StatefulWidget {
-  final VoidCallback showSignupScreenOne;
-  const loginScreen({Key? key,required this.showSignupScreenOne}) : super(key: key);
-    @override
-  _LoginScreenState createState() => _LoginScreenState();
+class signupScreenOne extends StatefulWidget {
+  final VoidCallback showLoginPage;
+  const signupScreenOne({Key? key,required this.showLoginPage}) : super(key: key);
+
+  @override
+  _SignupScreenOneState createState() => _SignupScreenOneState();
 }
 
-class _LoginScreenState extends State<loginScreen> {
+class _SignupScreenOneState extends State<signupScreenOne> {
 
   //test controllers
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+   final _emailController = TextEditingController();
+   final _passwordController = TextEditingController();
+  // final _firstNameController = TextEditingController();
+  // final _lastNameController = TextEditingController();
+  // final _mobileNumberController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
-
-
-  Future signIn() async{
-    await FirebaseAuth.instance
-        .signInWithEmailAndPassword(
-        email: _emailController.text.trim() ,
-        password: _passwordController.text.trim(),
-    );
+  Future signUp() async{
+    if(passwordConfirmed()){
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text.trim() ,
+          password: _passwordController.text.trim(),
+      );
+    }
   }
+
+
+
+  bool passwordConfirmed() {
+    if (
+    _passwordController.text.trim() == _confirmPasswordController.text.trim()){
+      return true;
+    }
+    else{
+      return false;
+    }
+
+  }
+
+   // Future signUp() async{
+   //   await FirebaseAuth.instance.createUserWithEmailAndPassword(
+   //               email: _emailController.text.trim(),
+   //               password: _passwordController.text.trim(),
+   //   );
+   // }
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    // _firstNameController.dispose();
+    // _lastNameController.dispose();
+    // _mobileNumberController.dispose();
     super.dispose();
   }
 
@@ -41,16 +69,16 @@ class _LoginScreenState extends State<loginScreen> {
     return Container(
       alignment: Alignment.centerLeft,
       child: Row(
-          children: [
-            Text("Sign In",
-              style: TextStyle(
-                fontSize: 34,
-                fontWeight: FontWeight.bold,
-                color: Color(0xff000730),
-              ),
+        children: [
+          Text("Sign Up",
+            style: TextStyle(
+              fontSize: 34,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff000730),
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -98,7 +126,7 @@ class _LoginScreenState extends State<loginScreen> {
                 ),
                 hintText: "Email",
                 hintStyle: TextStyle(
-                  color: Colors.black38,
+                  color: Colors.black54,
                 )),
           ),
         ),
@@ -157,106 +185,98 @@ class _LoginScreenState extends State<loginScreen> {
     );
   }
 
-  Widget buildForgetPassBtn() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: TextButton(
-          onPressed: () => print("Forgot Password pressed"),
-          child: Text(
-            "Forgot password?",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          )),
-    );
-  }
-
-  // Widget buildRememberCb() {
-  //   return Container(
-  //     height: 20,
-  //     child: Row(
-  //       children: <Widget>[
-  //         Theme(
-  //             data: ThemeData(unselectedWidgetColor: Colors.white),
-  //             child: Checkbox(
-  //               value: isRememberMe,
-  //               checkColor: Colors.green,
-  //               activeColor: Colors.white,
-  //               onChanged: (value) {
-  //                 setState(() {
-  //                   isRememberMe = value!;
-  //                 });
-  //               },
-  //             )),
-  //         Text(
-  //           "Remember me",
-  //           style: TextStyle(
-  //             color: Colors.white,
-  //             fontWeight: FontWeight.bold,
-  //           ),
-  //         )
-  //       ],
-  //     ),
-  //   );
-  // }
-
-Widget buildLoginBtn(){
-    return GestureDetector(
-        onTap: signIn,
-        child: Container(
-          padding: EdgeInsets.all(20),
+  Widget buildConfirmPassword() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          "Confirm Password",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-            color: Color(0xff000730),
-            borderRadius: BorderRadius.circular(50),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(50),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 6,
                   offset: Offset(0, 2),
                 )
-              ]
+              ]),
+          height: 60,
+          child: TextField(
+            controller: _confirmPasswordController,
+            obscureText: true,
+            style: TextStyle(
+              color: Colors.black87,
+            ),
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(top: 14),
+                prefixIcon: Icon(
+                  Icons.lock,
+                  color: Color(0xff1493ff),
+                ),
+                hintText: "Confirm Password",
+                hintStyle: TextStyle(
+                  color: Colors.black38,
+                )),
           ),
-          child: Center(
-            child: Text("Sign In",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+        ),
+      ],
+    );
+  }
+
+
+
+  Widget buildLoginBtn(){
+    return GestureDetector(
+       onTap: signUp,
+         //() {
+      //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=> signupScreenTwo()));
+      // },
+      child: Container(
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+            color: Color(0xff000730),
+            borderRadius: BorderRadius.circular(50),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 6,
+                offset: Offset(0, 2),
+              )
+            ]
+        ),
+        child: Center(
+          child: Text("Sign Up",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
+      ),
     );
-}
-
-  Widget buildGoogleLogin(){
-   return Row(
-     mainAxisAlignment: MainAxisAlignment.center,
-     children: [
-       Container(
-         child: Image(image: AssetImage("assets/images/googleLogo.png"),
-          height: 30,
-           width: 30,
-         ),
-       ),
-       SizedBox(width: 10,),
-       Text("Sign in with google",style: TextStyle(
-          fontSize: 20,
-         color: Colors.white,
-         fontWeight: FontWeight.w500,
-        ),
-       ),
-     ],
-   );
   }
+
 
 
   Widget buildSignUpBtn() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Don\'t have an account? ",
+        Text("Already have an account? ",
           style: TextStyle(
             color: Colors.white,
             fontSize: 18,
@@ -264,9 +284,8 @@ Widget buildLoginBtn(){
           ),
         ),
         GestureDetector(
-          onTap:
-           widget.showSignupScreenOne,
-          child: Text("Sign Up",
+          onTap: widget.showLoginPage,
+          child: Text("Sign In",
             style: TextStyle(
               color: Color(0xff000730),
               fontSize: 18,
@@ -294,10 +313,10 @@ Widget buildLoginBtn(){
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                          Color(0x662e93a1),
+                          Color(0x87ceebff),
                           //Color(0x991493ff),
                           //Color(0xcc1493ff),
-                          Color(0xff2e93a1),
+                          Color(0xff2e93ff),
                         ])),
                 child: SingleChildScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
@@ -333,12 +352,11 @@ Widget buildLoginBtn(){
                         height: 20,
                       ),
                       buildPassword(),
-                      buildForgetPassBtn(),
-                      // buildRememberCb(),
                       SizedBox(height: 25,),
+                      buildConfirmPassword(),
+                      SizedBox(height: 50,),
                       buildLoginBtn(),
                       SizedBox(height: 25,),
-                      buildGoogleLogin(),
                       SizedBox(height: 25,),
                       buildSignUpBtn(),
                     ],
