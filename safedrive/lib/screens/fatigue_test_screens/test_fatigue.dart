@@ -44,81 +44,80 @@ class _TestFatigueState extends State<TestFatigue> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: GestureDetector(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      // SizedBox(height: 0,),
-                      const Text(
-                        "Let's Test Your\nFatigue Level",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xff000730),
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const Image(image: AssetImage("assets/images/testFatigue.png"),
-                        height: 250,
-                        width: 250,
-                      ),
-                      const Text(
-                        "Did you know ?" "\n",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xff000730),
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const Text(
-                        "Fatigue related crashes are twice as likely to be fatal than any other crashes." "\n",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xff000730),
-                          fontSize: 28,
-                          //fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const Text(
-                        "You can't brake if you are asleep.",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xff000730),
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 30.0),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(30.0),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(builder: (context) => TestFatigue_Q1()),
-                            // );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white, backgroundColor: const Color(0xff000730),
-                            padding: const EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
-                          ),
-                          child: const Text(
-                            'Start',
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                        ),
-                      ),
-                    ],
+        body: AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle.light,
+          child: GestureDetector(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                // SizedBox(height: 0,),
+                const Text(
+                  "Let's Test Your\nFatigue Level",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xff000730),
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              )
-     );
+                const Image(image: AssetImage("assets/images/testFatigue.png"),
+                  height: 250,
+                  width: 250,
+                ),
+                const Text(
+                  "Did you know ?" "\n",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xff000730),
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const Text(
+                  "Fatigue related crashes are twice as likely to be fatal than any other crashes." "\n",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xff000730),
+                    fontSize: 28,
+                    //fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const Text(
+                  "You can't brake if you are asleep.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xff000730),
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 30.0),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(30.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => TestFatigue_Q1()),
+                      // );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white, backgroundColor: const Color(0xff000730),
+                      padding: const EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
+                    ),
+                    child: const Text(
+                      'Start',
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )
+    );
   }
 }
-
 
 
 
