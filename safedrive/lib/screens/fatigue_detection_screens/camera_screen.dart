@@ -57,14 +57,14 @@ class _CameraScreenState extends State<CameraScreen> {
       var prediction = await Tflite.runModelOnFrame(bytesList: cameraImage!.planes.map((plane) {
         return plane.bytes;
       }).toList(),
-      imageHeight: cameraImage!.height,
-      imageWidth: cameraImage!.width,
-      imageMean: 127.5,
-      imageStd: 127.5,
-      rotation: 90,
-      numResults: 2,
-      threshold: 0.1,
-      asynch: true
+          imageHeight: cameraImage!.height,
+          imageWidth: cameraImage!.width,
+          imageMean: 127.5,
+          imageStd: 127.5,
+          rotation: 90,
+          numResults: 2,
+          threshold: 0.1,
+          asynch: true
       );
       for (var element in prediction!) {
         setState(() {
@@ -88,8 +88,8 @@ class _CameraScreenState extends State<CameraScreen> {
   }
   loadModel() async {
     await Tflite.loadModel(
-      model: "assets/model.tflite",
-      labels: "assets/labels.txt"
+        model: "assets/model.tflite",
+        labels: "assets/labels.txt"
     );
   }
   @override
@@ -101,12 +101,12 @@ class _CameraScreenState extends State<CameraScreen> {
           const SizedBox(height: 40.0,),
           Padding(padding: const EdgeInsets.all(20),
             child: SizedBox(
-              height: size.height*0.7,
-              width: size.width,
-              child: !cameraController!.value.isInitialized?
-              Container():
-              AspectRatio(aspectRatio: cameraController!.value.aspectRatio,
-              child: CameraPreview(cameraController!),)
+                height: size.height*0.7,
+                width: size.width,
+                child: !cameraController!.value.isInitialized?
+                Container():
+                AspectRatio(aspectRatio: cameraController!.value.aspectRatio,
+                  child: CameraPreview(cameraController!),)
             ),
           ),
           Text(output, style: const TextStyle(

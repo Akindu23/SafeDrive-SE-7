@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/src/material/checkbox.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:safedrive/screens/login_screens/signup_screen_one.dart';
+import 'package:safedrive/screens/login_screens/ForgotPasswordPage.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
-
+class loginScreen extends StatefulWidget {
+  final VoidCallback showSignupScreenOne;
+  const loginScreen({Key? key,required this.showSignupScreenOne}) : super(key: key);
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<loginScreen> {
 
   //test controllers
   final _emailController = TextEditingController();
@@ -18,8 +21,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Future signIn() async{
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(
-        email: _emailController.text.trim() ,
-        password: _passwordController.text.trim(),
+      email: _emailController.text.trim() ,
+      password: _passwordController.text.trim(),
     );
   }
 
@@ -36,16 +39,16 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       alignment: Alignment.centerLeft,
       child: Row(
-          children: const [
-            Text("Sign In",
-              style: TextStyle(
-                fontSize: 34,
-                fontWeight: FontWeight.bold,
-                color: Color(0xff000730),
-              ),
+        children: [
+          Text("Sign In",
+            style: TextStyle(
+              fontSize: 34,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff000730),
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -54,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const Text(
+        Text(
           "Email",
           style: TextStyle(
             color: Colors.white,
@@ -62,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(
+        SizedBox(
           height: 10,
         ),
         Container(
@@ -70,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(50),
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 6,
@@ -81,10 +84,10 @@ class _LoginScreenState extends State<LoginScreen> {
           child: TextField(
             controller: _emailController,
             keyboardType: TextInputType.emailAddress,
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.black87,
             ),
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
@@ -105,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const Text(
+        Text(
           "Password",
           style: TextStyle(
             color: Colors.white,
@@ -113,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(
+        SizedBox(
           height: 10,
         ),
         Container(
@@ -121,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(50),
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 6,
@@ -132,10 +135,10 @@ class _LoginScreenState extends State<LoginScreen> {
           child: TextField(
             controller: _passwordController,
             obscureText: true,
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.black87,
             ),
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
@@ -153,121 +156,130 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget buildForgetPassBtn() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: TextButton(
-          onPressed: () => print("Forgot Password pressed"),
-          child: const Text(
+
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context){
+          return ForgotPasswordPage();
+        }));
+      },
+      child: Container(
+          alignment: Alignment.centerRight,
+          child: Text(
             "Forgot password?",
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-            ),
-          )),
-    );
-  }
-
-  Widget buildRememberCb() {
-    return SizedBox(
-      height: 20,
-      child: Row(
-        children: <Widget>[
-          Theme(
-              data: ThemeData(unselectedWidgetColor: Colors.white),
-              child: Checkbox(
-                value: isRememberMe,
-                checkColor: Colors.green,
-                activeColor: Colors.white,
-                onChanged: (value) {
-                  setState(() {
-                    isRememberMe = value!;
-                  });
-                },
-              )),
-          const Text(
-            "Remember me",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+              fontSize: 16,
             ),
           )
-        ],
       ),
     );
   }
 
-Widget buildLoginBtn(){
+  // Widget buildRememberCb() {
+  //   return Container(
+  //     height: 20,
+  //     child: Row(
+  //       children: <Widget>[
+  //         Theme(
+  //             data: ThemeData(unselectedWidgetColor: Colors.white),
+  //             child: Checkbox(
+  //               value: isRememberMe,
+  //               checkColor: Colors.green,
+  //               activeColor: Colors.white,
+  //               onChanged: (value) {
+  //                 setState(() {
+  //                   isRememberMe = value!;
+  //                 });
+  //               },
+  //             )),
+  //         Text(
+  //           "Remember me",
+  //           style: TextStyle(
+  //             color: Colors.white,
+  //             fontWeight: FontWeight.bold,
+  //           ),
+  //         )
+  //       ],
+  //     ),
+  //   );
+  // }
+
+  Widget buildLoginBtn(){
     return GestureDetector(
-        onTap: signIn,
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: const Color(0xff000730),
+      onTap: signIn,
+      child: Container(
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+            color: Color(0xff000730),
             borderRadius: BorderRadius.circular(50),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 6,
-                  offset: Offset(0, 2),
-                )
-              ]
-          ),
-          child: const Center(
-            child: Text("Sign In",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 6,
+                offset: Offset(0, 2),
+              )
+            ]
+        ),
+        child: Center(
+          child: Text("Sign In",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
+      ),
     );
-}
+  }
 
   Widget buildGoogleLogin(){
-   return Row(
-     mainAxisAlignment: MainAxisAlignment.center,
-     children: const [
-       Image(image: AssetImage("assets/images/googleLogo.png"),
-        height: 30,
-         width: 30,
-       ),
-       SizedBox(width: 10,),
-       Text("Sign in with google",style: TextStyle(
-          fontSize: 20,
-         color: Colors.white,
-         fontWeight: FontWeight.w500,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          child: Image(image: AssetImage("assets/images/googleLogo.png"),
+            height: 30,
+            width: 30,
+          ),
         ),
-       ),
-     ],
-   );
+        SizedBox(width: 10,),
+        Text("Sign in with google",style: TextStyle(
+          fontSize: 20,
+          color: Colors.white,
+          fontWeight: FontWeight.w500,
+        ),
+        ),
+      ],
+    );
   }
 
 
   Widget buildSignUpBtn() {
-    return GestureDetector(
-      // onTap: () => print("Sign Up Pressed"),
-      child: RichText(
-        text: const TextSpan(children: [
-          TextSpan(
-              text: "Don't have an account? ",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Don\'t have an account? ",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
           ),
-          TextSpan(
-            text: "Sign Up",
+        ),
+        GestureDetector(
+          onTap:
+          widget.showSignupScreenOne,
+          child: Text("Sign Up",
             style: TextStyle(
               color: Color(0xff000730),
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
-          )
-        ]),
-      ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -282,7 +294,7 @@ Widget buildLoginBtn(){
               Container(
                 height: double.infinity,
                 width: double.infinity,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                     gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -293,20 +305,22 @@ Widget buildLoginBtn(){
                           Color(0xff2e93ff),
                         ])),
                 child: SingleChildScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(
+                  physics: AlwaysScrollableScrollPhysics(),
+                  padding: EdgeInsets.symmetric(
                     horizontal: 25,
                     vertical: 25,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      const SizedBox(height: 50,),
-                      const Image(image: AssetImage("assets/images/safedrivelogo.png"),
-                        height: 100,
-                        width: 100,
+                      SizedBox(height: 50,),
+                      Container(
+                        child: Image(image: AssetImage("assets/images/safedrivelogo.png"),
+                          height: 100,
+                          width: 100,
+                        ),
                       ),
-                      const Text(
+                      Text(
                         "SafeDrive",
                         style: TextStyle(
                           color: Color(0xff000730),
@@ -314,23 +328,24 @@ Widget buildLoginBtn(){
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 35,
                       ),
                       buildTextSignUp(),
-                      const SizedBox(height: 20,),
+                      SizedBox(height: 20,),
                       buildEmail(),
-                      const SizedBox(
+                      SizedBox(
                         height: 20,
                       ),
                       buildPassword(),
+                      SizedBox(height: 10,),
                       buildForgetPassBtn(),
-                      buildRememberCb(),
-                      const SizedBox(height: 25,),
+                      // buildRememberCb(),
+                      SizedBox(height: 25,),
                       buildLoginBtn(),
-                      const SizedBox(height: 25,),
+                      SizedBox(height: 25,),
                       buildGoogleLogin(),
-                      const SizedBox(height: 25,),
+                      SizedBox(height: 25,),
                       buildSignUpBtn(),
                     ],
                   ),
