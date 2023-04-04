@@ -70,7 +70,7 @@ flutter_native_splash:
   ios: true
 
   color: "#87CEEB"
-  image: assets/images/splashscreen.png
+  image: assets/images/safedrivelogo.png
 
   android_12:
     image: assets/images/safedrivelogo.png

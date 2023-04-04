@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:safedrive/screens/fatigue_detection_screens/camera_screen.dart';
-import 'package:safedrive/screens/fatigue_detection_screens/loading_screen.dart';
 import 'package:safedrive/screens/fatigue_test_screens/test_fatigue.dart';
 import 'package:safedrive/screens/maps_screen/maps_screen.dart';
 import 'package:safedrive/utils/util_functions.dart';
@@ -29,19 +28,16 @@ class _HomePageState extends State<HomePage> {
                 height: 75,
               ),
               Padding(
-
                 padding: const EdgeInsets.only(left: 125),
-                child: Container(
-                  child: Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text("${user.email!}",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-
+                child: Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          user.email!,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         MaterialButton(
@@ -49,19 +45,25 @@ class _HomePageState extends State<HomePage> {
                             FirebaseAuth.instance.signOut();
                           },
                           shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(50))
-                          ),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(50))),
                           color: const Color(0xff000730),
-                          child: const Text("Sign Out",
-                          style: TextStyle(
-                            color: Colors.white,
+                          child: const Text(
+                            "Sign Out",
+                            style: TextStyle(
+                              color: Colors.white,
                             ),
                           ),
                         ),
-                      ],
+                      ], // add closing bracket here
                     ),
-                     const SizedBox(width: 10,),
-                     const Icon(Icons.account_circle_rounded,size: 50,),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const Icon(
+                      Icons.account_circle_rounded,
+                      size: 50,
+                    ),
                   ],
                 ),
               ),
@@ -106,54 +108,7 @@ class _HomePageState extends State<HomePage> {
                         width: 250,
                       ),
                       Text(
-
                         "Start Journey",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                       Padding(
-                         padding: EdgeInsets.all(10),
-                         child: Text("Drive with Safe Drive and ensure  your safety while traveling.",
-                         style: TextStyle(
-                           fontSize: 16,
-                          ),
-                         ),
-                       )
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              GestureDetector(
-                onTap: () {
-                  UtilFunction.navigateTo(context, const TestFatigue());
-                },
-                child: Container(
-                  height: 350,
-                  width: 350,
-                  decoration: BoxDecoration(
-                      color: const Color(0xffFAFAFA),
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black26,
-                          blurRadius: 6,
-                          offset: Offset(0, 2),
-                        )
-                      ]),
-                  child: Column(
-                    children: const [
-                      Image(
-                        image: AssetImage("assets/images/test.png"),
-                        height: 250,
-                        width: 250,
-                      ),
-                      Text(
-                        "Fatigue Test",
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -161,12 +116,13 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Padding(
                         padding: EdgeInsets.all(10),
-                        child: Text("Test your Fatigue Level before driving.",
+                        child: Text(
+                          "Drive with Safe Drive and ensure  your safety while traveling.",
                           style: TextStyle(
                             fontSize: 16,
                           ),
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -207,7 +163,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Padding(
                         padding: EdgeInsets.all(10),
-                        child: Text("Take a Rest and be fresh before driving.",
+                        child: Text(
+                          "Take a Rest and be fresh before driving.",
                           style: TextStyle(
                             fontSize: 16,
                           ),
@@ -221,7 +178,9 @@ class _HomePageState extends State<HomePage> {
                 height: 24,
               ),
               GestureDetector(
-                onTap: (){_navigateToAddContacts(context);},
+                onTap: () {
+                  _navigateToAddContacts(context);
+                },
                 child: Container(
                   height: 350,
                   width: 350,
@@ -251,10 +210,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Padding(
                         padding: EdgeInsets.all(10),
-                        child: Text("Emergency contacts are more important when you are in trouble.",
+                        child: Text(
+                          "Emergency contacts are more important when you are in trouble.",
                           style: TextStyle(
                             fontSize: 16,
-                          ),),
+                          ),
+                        ),
                       )
                     ],
                   ),
@@ -263,39 +224,53 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 24,
               ),
-              // Container(
-              //   child: Column(
-              //     children: [
-              //       Image(
-              //         image: AssetImage("assets/images/history.png"),
-              //         height: 250,
-              //         width: 250,
-              //       ),
-              //       Text(
-              //         "Journey History",
-              //         style: TextStyle(
-              //           fontSize: 22,
-              //           fontWeight: FontWeight.bold,
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              //   height: 300,
-              //   width: 350,
-              //   decoration: BoxDecoration(
-              //       color: Color(0xffFAFAFA),
-              //       borderRadius: BorderRadius.circular(20),
-              //       boxShadow: [
-              //         BoxShadow(
-              //           color: Colors.black26,
-              //           blurRadius: 6,
-              //           offset: Offset(0, 2),
-              //         )
-              //       ]),
-              // ),
-              // SizedBox(
-              //   height: 25,
-              // ),
+              GestureDetector(
+                onTap: () {
+                  UtilFunction.navigateTo(context, const TestFatigue());
+                },
+                child: Container(
+                  height: 350,
+                  width: 350,
+                  decoration: BoxDecoration(
+                      color: const Color(0xffFAFAFA),
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                          offset: Offset(0, 2),
+                        )
+                      ]),
+                  child: Column(
+                    children: const [
+                      Image(
+                        image: AssetImage("assets/images/test.png"),
+                        height: 250,
+                        width: 250,
+                      ),
+                      Text(
+                        "Fatigue Test",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          "Test your Fatigue Level before driving.",
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
             ],
           ),
         ),
@@ -303,6 +278,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
 void _navigateToAddContacts(BuildContext context) {
-  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AddContacts()));
+  Navigator.of(context)
+      .push(MaterialPageRoute(builder: (context) => const AddContacts()));
 }

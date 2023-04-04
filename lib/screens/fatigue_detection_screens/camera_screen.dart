@@ -2,7 +2,7 @@ import 'package:camera/camera.dart';
 import 'package:safedrive/main.dart';
 import 'package:safedrive/screens/maps_screen/maps_screen.dart';
 import 'package:safedrive/utils/util_functions.dart';
-import 'package:safedrive/screens/home_page_screens/home_Page.dart';
+import 'package:safedrive/screens/home_page_screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:tflite/tflite.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -138,6 +138,7 @@ class _CameraScreenState extends State<CameraScreen> {
             borderRadius: BorderRadius.circular(30.0),
             child: ElevatedButton(
               onPressed: () {
+                cameraController!.stopImageStream();
                 UtilFunction.navigateTo(context, const HomePage());
               },
               style: ElevatedButton.styleFrom(

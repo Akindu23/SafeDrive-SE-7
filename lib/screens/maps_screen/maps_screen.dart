@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_webservice/places.dart';
-import 'package:safedrive/screens/home_page_screens/home_Page.dart';
+import 'package:safedrive/screens/home_page_screens/home_page.dart';
 import 'package:safedrive/utils/util_functions.dart';
 
 final places = GoogleMapsPlaces(apiKey: "AIzaSyDWiFu9s5jkaasiw3ER6gwohs84MYDMB0E");
