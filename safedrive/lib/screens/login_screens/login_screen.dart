@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/src/material/checkbox.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:safedrive/screens/login_screens/signup_screen_one.dart';
-import 'package:safedrive/screens/login_screens/ForgotPasswordPage.dart';
+import 'package:safedrive/screens/login_screens/forgot_password_page.dart';
 
 class loginScreen extends StatefulWidget {
   final VoidCallback showSignupScreenOne;
