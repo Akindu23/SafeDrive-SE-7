@@ -77,9 +77,9 @@ class _AddContactNumState extends State<AddContactNum>{
                           "email": user.email,
                           "tel": phoneNumber,
                         });
-                        if(context.mounted) {
-                          _navigateToHomePage(context);
-                        }
+                        // if(context.mounted) {
+                        //   _navigateToHomePage(context);
+                        // }
                       }
                     },
                     child: const Text('Done'),

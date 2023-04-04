@@ -4,7 +4,6 @@ import 'package:safedrive/screens/fatigue_detection_screens/camera_screen.dart';
 import 'package:safedrive/screens/fatigue_test_screens/test_fatigue.dart';
 import 'package:safedrive/screens/maps_screen/maps_screen.dart';
 import 'package:safedrive/utils/util_functions.dart';
-
 import '../emergency_contacts_screens/add_contacts.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,18 +25,53 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               const SizedBox(
-                height: 25,
+                height: 75,
               ),
-              Text("sign in as ${user.email!}"),
-              MaterialButton(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                },
-                color: Colors.blue,
-                child: const Text("sign out"),
+              Padding(
+                padding: const EdgeInsets.only(left: 150),
+                child: Container(
+                  child: Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text("${user.email!}",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          MaterialButton(
+                            onPressed: () {
+                              FirebaseAuth.instance.signOut();
+                            },
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(50))
+                            ),
+                            color: Color(0xff000730),
+                            child: const Text("sign out",
+                            style: TextStyle(
+                              color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                       SizedBox(width: 10,),
+                       Icon(Icons.account_circle_rounded,size: 50,),
+                    ],
+                  ),
+                ),
               ),
+              // Text("sign in as ${user.email!}"),
+              // MaterialButton(
+              //   onPressed: () {
+              //     FirebaseAuth.instance.signOut();
+              //   },
+              //   color: Colors.blue,
+              //   child: const Text("sign out"),
+              // ),
               const SizedBox(
-                height: 50,
+                height: 25,
               ),
               const Text(
                 "Ways to Plan With Safe Drive",
@@ -54,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                   UtilFunction.navigateTo(context, const CameraScreen());
                 },
                 child: Container(
-                  height: 300,
+                  height: 350,
                   width: 350,
                   decoration: BoxDecoration(
                     color: const Color(0xffFAFAFA),
@@ -75,10 +109,65 @@ class _HomePageState extends State<HomePage> {
                         width: 250,
                       ),
                       Text(
+
                         "Start Journey",
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                       Padding(
+                         padding: EdgeInsets.all(10),
+                         child: Text("Drive with Safe Drive and ensure  your safty while traveling.",
+                         style: TextStyle(
+                           fontWeight: FontWeight.bold,fontSize: 18,
+                          ),
+                         ),
+                       )
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              GestureDetector(
+                onTap: () {
+                  UtilFunction.navigateTo(context, TestFatigue());
+                },
+                child: Container(
+                  height: 330,
+                  width: 350,
+                  decoration: BoxDecoration(
+                      color: const Color(0xffFAFAFA),
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                          offset: Offset(0, 2),
+                        )
+                      ]),
+                  child: Column(
+                    children: const [
+                      Image(
+                        image: AssetImage("assets/images/test.png"),
+                        height: 250,
+                        width: 250,
+                      ),
+                      Text(
+                        "Fatigue Test",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text("Test your Fatigue Level before driving.",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,fontSize: 18,
+                          ),
                         ),
                       ),
                     ],
@@ -88,86 +177,56 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 24,
               ),
-          GestureDetector(
-            onTap: () {
-              UtilFunction.navigateTo(context, TestFatigue());
-            },
-              child: Container(
-                height: 300,
-                width: 350,
-                decoration: BoxDecoration(
-                    color: const Color(0xffFAFAFA),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      )
-                    ]),
-                child: Column(
-                  children: const [
-                    Image(
-                      image: AssetImage("assets/images/test.png"),
-                      height: 250,
-                      width: 250,
-                    ),
-                    Text(
-                      "Fatigue Test",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: () {
+                  UtilFunction.navigateTo(context, const RestStopScreen());
+                },
+                child: Container(
+                  height: 325,
+                  width: 350,
+                  decoration: BoxDecoration(
+                      color: const Color(0xffFAFAFA),
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                          offset: Offset(0, 2),
+                        )
+                      ]),
+                  child: Column(
+                    children: const [
+                      Image(
+                        image: AssetImage("assets/images/restshop.png"),
+                        height: 250,
+                        width: 250,
                       ),
-                    ),
-                  ],
+                      Text(
+                        "Nearest Rest Stop",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text("Take a Rest and be fresh before driving.",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-          ),
-              const SizedBox(
-                height: 24,
-              ),
-          GestureDetector(
-            onTap: () {
-              UtilFunction.navigateTo(context, const RestStopScreen());
-            },
-              child: Container(
-                height: 300,
-                width: 350,
-                decoration: BoxDecoration(
-                    color: const Color(0xffFAFAFA),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
-                      )
-                    ]),
-                child: Column(
-                  children: const [
-                    Image(
-                      image: AssetImage("assets/images/restshop.png"),
-                      height: 250,
-                      width: 250,
-                    ),
-                    Text(
-                      "Nearest Rest Stop",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-          ),
               const SizedBox(
                 height: 24,
               ),
               GestureDetector(
                 onTap: (){_navigateToAddContacts(context);},
                 child: Container(
-                  height: 300,
+                  height: 350,
                   width: 350,
                   decoration: BoxDecoration(
                       color: const Color(0xffFAFAFA),
@@ -193,6 +252,13 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text("Emergency contacts are more important when you are in a troble.",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,fontSize: 18,
+                          ),),
+                      )
                     ],
                   ),
                 ),

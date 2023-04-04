@@ -4,8 +4,8 @@ class UtilFunction{
 
   //Navigation to page
   static navigateTo(BuildContext context, Widget widget) {
-    return Navigator.push(context, 
-      MaterialPageRoute(builder: (context) => widget));
+    return Navigator.push(context,
+        MaterialPageRoute(builder: (context) => widget));
   }
 
   //

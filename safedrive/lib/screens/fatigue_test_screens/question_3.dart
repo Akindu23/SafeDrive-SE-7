@@ -58,14 +58,14 @@ class StarPainter extends CustomPainter {
     path.close();
 
     final paint = Paint()..color = color;
-    
+
     canvas.translate(size.width / 2, size.height / 2);
     canvas.rotate(pi);
     canvas.translate(-size.width / 2, -size.height / 2);
 
     canvas.drawPath(path, paint);
   }
-    
+
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
@@ -177,17 +177,17 @@ class MyApp extends StatelessWidget {
                             ),
                           );
                       }
-                       return Container();
+                      return Container();
                     },
                   ),
                 ),
               ),
               const SizedBox( height: 20.0 ),
               Text(
-                  'Number of triangles: $triangles',
-                   style: const TextStyle( color: Color(0xff000730), fontSize: 25.0, fontWeight: FontWeight.bold,),
-            ),
-           ],
+                'Number of triangles: $triangles',
+                style: const TextStyle( color: Color(0xff000730), fontSize: 25.0, fontWeight: FontWeight.bold,),
+              ),
+            ],
           ),
         ),
       ),
