@@ -138,6 +138,7 @@ class _CameraScreenState extends State<CameraScreen> {
             borderRadius: BorderRadius.circular(30.0),
             child: ElevatedButton(
               onPressed: () {
+                cameraController!.stopImageStream();
                 UtilFunction.navigateTo(context, const HomePage());
               },
               style: ElevatedButton.styleFrom(
