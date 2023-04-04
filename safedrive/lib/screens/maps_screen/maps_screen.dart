@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_webservice/places.dart';
+import 'package:safedrive/screens/home_page_screens/home_Page.dart';
+import 'package:safedrive/utils/util_functions.dart';
 
 final places = GoogleMapsPlaces(apiKey: "AIzaSyDWiFu9s5jkaasiw3ER6gwohs84MYDMB0E");
 
@@ -76,16 +78,44 @@ class _RestStopScreenState extends State<RestStopScreen> {
                 _retrieveNearbyRestStops(userLocation);
               }
 
-              return GoogleMap(
-                initialCameraPosition: CameraPosition(
-                  target: userLocation,
-                  zoom: 16,
-                ),
-                markers: _markers
-                  ..add(Marker(
-                      markerId: const MarkerId("User Location"),
-                      infoWindow: const InfoWindow(title: "User Location"),
-                      position: userLocation)),
+              return Stack(
+                children: [
+                  GoogleMap(
+                    initialCameraPosition: CameraPosition(
+                      target: userLocation,
+                      zoom: 16,
+                    ),
+                    markers: _markers
+                      ..add(Marker(
+                          markerId: const MarkerId("User Location"),
+                          infoWindow: const InfoWindow(title: "User Location"),
+                          position: userLocation)),
+                  ),
+                  Positioned(
+                    bottom: 20,
+                    left: 16,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          UtilFunction.navigateTo(context, const HomePage());
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                          const Color(0xFF000730), // Set the background color
+                          padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
+                        ),
+                        child: const Text(
+                          'Back to Home Page',
+                          style: TextStyle(
+                            color: Colors.white, // Set the text color
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               );
             } else {
               return const Center(child: Text("Failed to get user location."));

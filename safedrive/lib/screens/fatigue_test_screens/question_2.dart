@@ -20,7 +20,9 @@ class _Question2State extends State<Question2> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 100.0), // add some space here
+
+            const SizedBox(height: 70.0), // add some space here
+
             Container(
               alignment: Alignment.topRight,
               child: Container(
@@ -45,7 +47,9 @@ class _Question2State extends State<Question2> {
                 ),
               ),
             ),
-            const SizedBox(height: 20.0),
+
+            const SizedBox(height: 10.0),
+
             Container(
               decoration: const BoxDecoration(
                 color: Colors.white,
@@ -90,7 +94,9 @@ class _Question2State extends State<Question2> {
                     ],
                   ),
 
-                  const SizedBox(height: 70.0),
+
+                  const SizedBox(height: 50.0),
+
                   ClipRRect(
                     borderRadius: BorderRadius.circular(30.0),
                     child: ElevatedButton(

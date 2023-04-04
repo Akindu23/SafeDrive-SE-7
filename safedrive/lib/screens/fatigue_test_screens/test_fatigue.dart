@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:safedrive/screens/fatigue_test_screens/question_3.dart';
-// import 'package:safedrive/screens/fatigue_test_screens/testFatigue_Q1.dart';
+import 'package:safedrive/screens/fatigue_test_screens/question_1.dart';
 
 class TestFatigue extends StatefulWidget {
   const TestFatigue({super.key});
@@ -96,10 +95,10 @@ class _TestFatigueState extends State<TestFatigue> {
                   borderRadius: BorderRadius.circular(30.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => TestFatigue_Q1()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Question1()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white, backgroundColor: const Color(0xff000730),
