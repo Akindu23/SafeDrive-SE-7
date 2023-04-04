@@ -29,15 +29,19 @@ class _HomePageState extends State<HomePage> {
                 height: 75,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 150),
-                child: Row(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(user.email!,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold,
+
+                padding: const EdgeInsets.only(left: 125),
+                child: Container(
+                  child: Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text("${user.email!}",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+
                           ),
                         ),
                         MaterialButton(
