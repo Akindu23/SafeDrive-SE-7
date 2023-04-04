@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:safedrive/screens/fatigue_test_screens/question2.dart';
+import 'package:safedrive/screens/fatigue_test_screens/question_2.dart';
 
 class Question1 extends StatefulWidget {
+  const Question1({super.key});
+
   @override
-  _Question1State createState() => _Question1State();
+  State<Question1> createState() => _Question1State();
 }
 
 class _Question1State extends State<Question1> {
@@ -14,22 +15,22 @@ class _Question1State extends State<Question1> {
     return Scaffold(
       body: Container(
         color: Colors.white,
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 100.0), // add some space here
+            const SizedBox(height: 100.0), // add some space here
             Container(
               alignment: Alignment.topRight,
               child: Container(
                 width: 150.0,
                 decoration: BoxDecoration(
-                  color: Color(0xff000730),
+                  color: const Color(0xff000730),
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
                 alignment: Alignment.centerRight,
-                child: Align(
+                child: const Align(
                   alignment: Alignment.topRight,
                   child: Center(
                     child: Text(
@@ -43,24 +44,24 @@ class _Question1State extends State<Question1> {
                 ),
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    "\n"+'Memorize this Number'+"\n"+"\n",
+                  const Text(
+                    "\n" 'Memorize this Number' "\n" "\n",
                     style: TextStyle(
                       color: Color(0xff000730),
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
+                  const Text(
                     "42",
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -69,7 +70,7 @@ class _Question1State extends State<Question1> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 100.0),
+                  const SizedBox(height: 100.0),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(30.0),
                     child: ElevatedButton(
@@ -80,11 +81,10 @@ class _Question1State extends State<Question1> {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xff000730),
-                        onPrimary: Colors.white,
-                        padding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
+                        foregroundColor: Colors.white, backgroundColor: const Color(0xff000730),
+                        padding: const EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Next',
                         style: TextStyle(fontSize: 20.0),
                       ),
