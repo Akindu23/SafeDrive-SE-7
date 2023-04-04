@@ -12,21 +12,27 @@ class AddContacts extends StatefulWidget {
 }
 
 class _AddContactsState extends State<AddContacts> {
+
+  //late String contact ;
+  String contact = '';
+  @override
+  void initState() {
+    readNum();
+    super.initState();
+  }
   void readNum() async {
     final user = FirebaseAuth.instance.currentUser!;
-    String user1 = user.uid;
-    final ref = FirebaseDatabase.instance.ref();
-    final snapshot = await ref.child('users').get();
-    if (snapshot.exists) {
-      print(snapshot.value);
-      //Object? numForDisplay = snapshot.value;
-    } else {
-      print('No data available.');
-    }
+    final ref = FirebaseDatabase.instance.ref("users").child(user.uid).child("tel");
+    Query query = ref;
+    DataSnapshot event = await query.get();
+    print(event.value.toString());
+    contact =  event.value.toString();
   }
 
   @override
   Widget build(BuildContext context) {
+    //late String contact ;
+    readNum();
     return Scaffold(
         appBar: AppBar(
           title: const Text('Emergency contact'),
@@ -41,8 +47,8 @@ class _AddContactsState extends State<AddContacts> {
                   decoration: BoxDecoration(
                     border: Border.all(),
                   ),
-                  child: const Center(
-                    child: Text('Enter Contact Number'),
+                  child: Center(
+                    child: Text(contact),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -92,6 +98,7 @@ class _AddContactsState extends State<AddContacts> {
                         style: TextStyle(fontSize: 15),
                       ),
                       onPressed: (){
+                        //readNum();
                         _navigateToAddContactNum(context);
                       },
                     ),

@@ -73,12 +73,13 @@ class _AddContactNumState extends State<AddContactNum>{
                       if (validation){
                         formKey.currentState?.save();
                         //_navigateToAddContacts(context);
-                        await ref.set({
+                        /*await ref.set({
                           "email": user.email,
                           "tel": phoneNumber,
-                        });
+                        });*/
+                        writeData();
                         // if(context.mounted) {
-                        //   _navigateToHomePage(context);
+                        _navigateToHomePage(context);
                         // }
                       }
                     },
@@ -96,6 +97,15 @@ class _AddContactNumState extends State<AddContactNum>{
 
   void _navigateToHomePage(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomePage()));
+  }
+
+  void writeData() async{
+    final uid = user.uid;
+    ref.child(uid).set({
+      "email": user.email,
+      "id": user.uid,
+      "tel": phoneNumber,
+    });
   }
 
   void getPhoneNumber(String phoneNumber) async {
