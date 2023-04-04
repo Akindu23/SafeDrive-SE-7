@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:safedrive/screens/fatigue_detection_screens/camera_screen.dart';
+import 'package:safedrive/screens/fatigue_detection_screens/loading_screen.dart';
 import 'package:safedrive/screens/fatigue_test_screens/test_fatigue.dart';
 import 'package:safedrive/screens/maps_screen/maps_screen.dart';
 import 'package:safedrive/utils/util_functions.dart';
@@ -28,7 +29,8 @@ class _HomePageState extends State<HomePage> {
                 height: 75,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 150),
+
+                padding: const EdgeInsets.only(left: 125),
                 child: Container(
                   child: Row(
                     children: [
@@ -39,37 +41,31 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
+
                           ),
-                          MaterialButton(
-                            onPressed: () {
-                              FirebaseAuth.instance.signOut();
-                            },
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(50))
-                            ),
-                            color: Color(0xff000730),
-                            child: const Text("sign out",
-                            style: TextStyle(
-                              color: Colors.white,
-                              ),
+                        ),
+                        MaterialButton(
+                          onPressed: () {
+                            FirebaseAuth.instance.signOut();
+                          },
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(50))
+                          ),
+                          color: const Color(0xff000730),
+                          child: const Text("Sign Out",
+                          style: TextStyle(
+                            color: Colors.white,
                             ),
                           ),
-                        ],
-                      ),
-                       SizedBox(width: 10,),
-                       Icon(Icons.account_circle_rounded,size: 50,),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                     const SizedBox(width: 10,),
+                     const Icon(Icons.account_circle_rounded,size: 50,),
+                  ],
                 ),
               ),
-              // Text("sign in as ${user.email!}"),
-              // MaterialButton(
-              //   onPressed: () {
-              //     FirebaseAuth.instance.signOut();
-              //   },
-              //   color: Colors.blue,
-              //   child: const Text("sign out"),
-              // ),
+
               const SizedBox(
                 height: 25,
               ),
@@ -79,6 +75,7 @@ class _HomePageState extends State<HomePage> {
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
               ),
               const SizedBox(
                 height: 30,
@@ -118,9 +115,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                        Padding(
                          padding: EdgeInsets.all(10),
-                         child: Text("Drive with Safe Drive and ensure  your safty while traveling.",
+                         child: Text("Drive with Safe Drive and ensure  your safety while traveling.",
                          style: TextStyle(
-                           fontWeight: FontWeight.bold,fontSize: 18,
+                           fontSize: 16,
                           ),
                          ),
                        )
@@ -133,10 +130,10 @@ class _HomePageState extends State<HomePage> {
               ),
               GestureDetector(
                 onTap: () {
-                  UtilFunction.navigateTo(context, TestFatigue());
+                  UtilFunction.navigateTo(context, const TestFatigue());
                 },
                 child: Container(
-                  height: 330,
+                  height: 350,
                   width: 350,
                   decoration: BoxDecoration(
                       color: const Color(0xffFAFAFA),
@@ -166,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                         padding: EdgeInsets.all(10),
                         child: Text("Test your Fatigue Level before driving.",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,fontSize: 18,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -182,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                   UtilFunction.navigateTo(context, const RestStopScreen());
                 },
                 child: Container(
-                  height: 325,
+                  height: 350,
                   width: 350,
                   decoration: BoxDecoration(
                       color: const Color(0xffFAFAFA),
@@ -212,7 +209,7 @@ class _HomePageState extends State<HomePage> {
                         padding: EdgeInsets.all(10),
                         child: Text("Take a Rest and be fresh before driving.",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,fontSize: 18,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -254,9 +251,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Padding(
                         padding: EdgeInsets.all(10),
-                        child: Text("Emergency contacts are more important when you are in a troble.",
+                        child: Text("Emergency contacts are more important when you are in trouble.",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,fontSize: 18,
+                            fontSize: 16,
                           ),),
                       )
                     ],
@@ -307,5 +304,5 @@ class _HomePageState extends State<HomePage> {
   }
 }
 void _navigateToAddContacts(BuildContext context) {
-  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddContacts()));
+  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AddContacts()));
 }
