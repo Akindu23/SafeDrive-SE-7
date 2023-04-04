@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:safedrive/screens/fatigue_detection_screens/camera_screen.dart';
 import 'package:safedrive/screens/fatigue_detection_screens/loading_screen.dart';
 import 'package:safedrive/screens/fatigue_test_screens/test_fatigue.dart';
 import 'package:safedrive/screens/maps_screen/maps_screen.dart';
@@ -70,13 +71,14 @@ class _HomePageState extends State<HomePage> {
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
               ),
               const SizedBox(
                 height: 30,
               ),
               GestureDetector(
                 onTap: () {
-                  UtilFunction.navigateTo(context, const FatigueDetection());
+                  UtilFunction.navigateTo(context, const CameraScreen());
                 },
                 child: Container(
                   height: 350,
@@ -111,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                          padding: EdgeInsets.all(10),
                          child: Text("Drive with Safe Drive and ensure  your safety while traveling.",
                          style: TextStyle(
-                           fontWeight: FontWeight.bold,fontSize: 18,
+                           fontSize: 16,
                           ),
                          ),
                        )
@@ -127,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                   UtilFunction.navigateTo(context, const TestFatigue());
                 },
                 child: Container(
-                  height: 330,
+                  height: 350,
                   width: 350,
                   decoration: BoxDecoration(
                       color: const Color(0xffFAFAFA),
@@ -157,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                         padding: EdgeInsets.all(10),
                         child: Text("Test your Fatigue Level before driving.",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,fontSize: 18,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -173,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                   UtilFunction.navigateTo(context, const RestStopScreen());
                 },
                 child: Container(
-                  height: 325,
+                  height: 350,
                   width: 350,
                   decoration: BoxDecoration(
                       color: const Color(0xffFAFAFA),
@@ -203,7 +205,7 @@ class _HomePageState extends State<HomePage> {
                         padding: EdgeInsets.all(10),
                         child: Text("Take a Rest and be fresh before driving.",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,fontSize: 18,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -247,7 +249,7 @@ class _HomePageState extends State<HomePage> {
                         padding: EdgeInsets.all(10),
                         child: Text("Emergency contacts are more important when you are in trouble.",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,fontSize: 18,
+                            fontSize: 16,
                           ),),
                       )
                     ],
