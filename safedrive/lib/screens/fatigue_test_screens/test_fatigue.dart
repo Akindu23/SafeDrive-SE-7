@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:safedrive/screens/fatigue_test_screens/question1.dart';
+import 'package:safedrive/screens/fatigue_test_screens/question_1.dart';
 
 class TestFatigue extends StatefulWidget {
   const TestFatigue({super.key});
