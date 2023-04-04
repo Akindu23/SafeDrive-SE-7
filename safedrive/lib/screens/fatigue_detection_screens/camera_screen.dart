@@ -1,9 +1,12 @@
 import 'package:camera/camera.dart';
 import 'package:safedrive/main.dart';
+import 'package:safedrive/screens/maps_screen/maps_screen.dart';
 import 'package:safedrive/utils/util_functions.dart';
+import 'package:safedrive/screens/home_page_screens/home_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:tflite/tflite.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:quickalert/quickalert.dart';
 import 'dart:async';
 
 class CameraScreen extends StatefulWidget {
@@ -69,7 +72,7 @@ class _CameraScreenState extends State<CameraScreen> {
       for (var element in prediction!) {
         setState(() {
           output = element['label'];
-          if (output == '1 Fatigue') {
+          if (output == 'Fatigued') {
             fatigueCounter++;
           }
           if (fatigueCounter > 30) {
@@ -81,6 +84,23 @@ class _CameraScreenState extends State<CameraScreen> {
             Timer(const Duration(seconds: 5), () => player.pause());
             fatigueCounter = 0;
             alarmCounter++;
+
+            if (alarmCounter >= 3) {
+              QuickAlert.show(
+                context: context,
+                type: QuickAlertType.warning,
+                text: 'It seems like you are fatigued. Please stop driving and '
+                    'select a rest stop from the map to take a break.',
+                confirmBtnText: 'OK',
+                confirmBtnColor: Colors.red,
+              );
+
+              cameraController!.stopImageStream();
+
+              Future.delayed(const Duration(seconds: 7), () {
+                UtilFunction.navigateTo(context, const RestStopScreen());
+              });
+            }
           }
         });
       }
@@ -112,6 +132,28 @@ class _CameraScreenState extends State<CameraScreen> {
           Text(output, style: const TextStyle(
               color: Colors.black,
               fontSize: 20.0),
+          ),
+          const SizedBox(height: 25),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(30.0),
+            child: ElevatedButton(
+              onPressed: () {
+                UtilFunction.navigateTo(context, const HomePage());
+              },
+              style: ElevatedButton.styleFrom(
+                // fixedSize: Size(250, 100),
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.red,
+                padding: const EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
+              ),
+              child: const Text(
+                'Stop Tracking',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
         ],
       ),

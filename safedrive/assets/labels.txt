@@ -1,2 +1,2 @@
-0 Alert
-1 Fatigue
+Alert
+Fatigued
