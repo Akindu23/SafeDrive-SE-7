@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:safedrive/screens/fatigue_test_screens/question_1.dart';
+import 'package:safedrive/screens/fatigue_test_screens/question_1sdss.dart';
 
 class TestFatigue extends StatefulWidget {
   const TestFatigue({super.key});
@@ -55,7 +56,7 @@ class _TestFatigueState extends State<TestFatigue> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xff000730),
-                    fontSize: 40,
+                    fontSize: 35,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -68,7 +69,7 @@ class _TestFatigueState extends State<TestFatigue> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xff000730),
-                    fontSize: 40,
+                    fontSize: 35,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -77,7 +78,7 @@ class _TestFatigueState extends State<TestFatigue> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xff000730),
-                    fontSize: 28,
+                    fontSize: 20,
                     //fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -86,7 +87,7 @@ class _TestFatigueState extends State<TestFatigue> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xff000730),
-                    fontSize: 26,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

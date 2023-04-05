@@ -1,28 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:safedrive/screens/fatigue_test_screens/fatigueTestNew.dart';
 
-class Question2Old extends StatefulWidget {
-  const Question2Old({super.key});
+class Question2 extends StatefulWidget {
+  const Question2({super.key});
 
   @override
-  State<Question2Old> createState() => _Question2OldState();
+  State<Question2> createState() => _Question2State();
 }
 
-class _Question2OldState extends State<Question2Old> {
+class _Question2State extends State<Question2> {
   get myFocusNode => null;
+  final _text = TextEditingController();
+  bool _validate = false;
+  final TextEditingController _textFieldController = TextEditingController();
 
+  @override
+  void dispose() {
+    _text.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.white,
-        padding: const EdgeInsets.all(20.0),
+      body: Center(
+        child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints viewportConstraints) {
+      return SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: viewportConstraints.maxHeight,
+            ),
+       child: Container(
+          color: Colors.white,
+          padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-
-            const SizedBox(height: 70.0), // add some space here
-
+          children: <Widget>[
+            const SizedBox(height: 100.0), // add some space here
             Container(
               alignment: Alignment.topRight,
               child: Container(
@@ -48,8 +63,7 @@ class _Question2OldState extends State<Question2Old> {
               ),
             ),
 
-            const SizedBox(height: 10.0),
-
+            const SizedBox(height: 50.0),
             Container(
               decoration: const BoxDecoration(
                 color: Colors.white,
@@ -59,7 +73,7 @@ class _Question2OldState extends State<Question2Old> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
-                    "\n" 'How many hours did you sleep last night ?' "\n",
+                    'How many hours did you sleep last night ?',
                     style: TextStyle(
                       color: Color(0xff000730),
                       fontSize: 30.0,
@@ -77,7 +91,17 @@ class _Question2OldState extends State<Question2Old> {
                     children: [
                       SizedBox(
                         width: 100,
-                        child: TextField(
+                        child: TextFormField(
+                          controller: _text,
+                          decoration: InputDecoration(
+                            errorText: _validate ? 'Value Can\'t Be Empty' : null,
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                width: 5,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
                           focusNode: myFocusNode,
                           style: const TextStyle(fontSize: 25),
                           textAlign: TextAlign.center,
@@ -94,17 +118,33 @@ class _Question2OldState extends State<Question2Old> {
                     ],
                   ),
 
-
-                  const SizedBox(height: 50.0),
-
+                  const SizedBox(height: 40.0),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(30.0),
                     child: ElevatedButton(
                       onPressed: () {
-                        /*Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ()),
-                        );*/
+                        if(_text.text.isEmpty){
+                          setState(() {
+                            _text.text.isEmpty ? _validate = true : _validate = false;
+                          });
+                        } else{
+                          // Get the value entered by the user in the text field
+                          String inputNum = _textFieldController.text;
+                          // Convert the entered value to an integer
+                          int value = int.tryParse(inputNum) ?? 0;
+                          // Check if the entered value is equal to 42
+                          if (value >= 7) {
+                            // Update the answer to true
+                            MyApp().answers[2] = true;
+                          } else if (value < 7) {
+                            // Update the answer to false
+                            MyApp().answers[2] = false;
+                          }
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => QuizPage3()),
+                          );
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white, backgroundColor: const Color(0xff000730),
@@ -121,7 +161,11 @@ class _Question2OldState extends State<Question2Old> {
             ),
           ],
         ),
-      ),
+       ),
+      )
     );
+  }
+    )
+    ));
   }
 }

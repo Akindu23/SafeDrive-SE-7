@@ -1,14 +1,17 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:safedrive/screens/fatigue_test_screens/question_2.dart';
 import 'package:safedrive/screens/fatigue_test_screens/question_2_New.dart';
 
 class Question1 extends StatefulWidget {
-  const Question1({super.key});
+  const Question1({Key? key}) : super(key: key);
 
   @override
   State<Question1> createState() => _Question1State();
 }
 
 class _Question1State extends State<Question1> {
+  int randomNum = Random().nextInt(100); // generate a random number between 0 and 99
 
   @override
   Widget build(BuildContext context) {
@@ -61,12 +64,11 @@ class _Question1State extends State<Question1> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const Text(
-                    "42",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Color(0xff000730),
-                      fontSize: 100,
+                  Text(
+                    '$randomNum', // display the random number generated
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 100.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -76,9 +78,9 @@ class _Question1State extends State<Question1> {
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Question2()),
-                        );
+                           context,
+                           MaterialPageRoute(builder: (context) => Question2()),
+                      );
                       },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white, backgroundColor: const Color(0xff000730),
