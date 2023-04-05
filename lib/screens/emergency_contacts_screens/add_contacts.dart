@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sms/flutter_sms.dart';
+import 'package:quickalert/quickalert.dart';
 import 'add_contact_number.dart';
 
 class AddContacts extends StatefulWidget {
@@ -32,7 +34,7 @@ class _AddContactsState extends State<AddContacts> {
                     border: Border.all(),
                   ),
                   child: Center(
-                    child: Text(contact,style: TextStyle(fontSize: 22),),
+                    child: Text(contact,style: const TextStyle(fontSize: 22),),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -42,23 +44,53 @@ class _AddContactsState extends State<AddContacts> {
                   children: <Widget>[
                     ElevatedButton(
                       style: ButtonStyle(
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              )
-                          )
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                        backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF000730)),
                       ),
                       child: const Text(
-                        "Edit",
-                        style: TextStyle(fontSize: 15),
+                        "Add",
+                        style: TextStyle(fontSize: 15, color: Colors.white),
                       ),
                       onPressed: () {
-                        //sendSMS(message: 'testing', recipients: [contact],sendDirect: true);
                         _navigateToAddContactNum(context);
+                      },
+                    ),
+                    const SizedBox(width: 10), // Add some space between the buttons
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                        backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF000730)),
+                      ),
+                      child: const Text(
+                        "Send a Message",
+                        style: TextStyle(fontSize: 15, color: Colors.white),
+                      ),
+                      onPressed: () {
+                        sendSMS(
+                            message: 'Testing Send SMS Function',
+                            recipients: [contact],
+                            sendDirect: true
+                        );
+                        QuickAlert.show(
+                          context: context,
+                          type: QuickAlertType.success,
+                          text: 'Message sent successfully',
+                          confirmBtnText: 'OK',
+                          confirmBtnColor: Colors.green,
+                        );
                       },
                     ),
                   ],
                 )
+
               ],
             )
         )

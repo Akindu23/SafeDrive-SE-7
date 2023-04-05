@@ -100,6 +100,7 @@ class _CameraScreenState extends State<CameraScreen> {
               Future.delayed(const Duration(seconds: 7), () {
                 UtilFunction.navigateTo(context, const RestStopScreen());
               });
+
             }
           }
         });

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Question2 extends StatefulWidget {
-  const Question2({super.key});
+class Question2Old extends StatefulWidget {
+  const Question2Old({super.key});
 
   @override
-  State<Question2> createState() => _Question2State();
+  State<Question2Old> createState() => _Question2OldState();
 }
 
-class _Question2State extends State<Question2> {
+class _Question2OldState extends State<Question2Old> {
   get myFocusNode => null;
 
 
