@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:safedrive/screens/home_page_screens/home_page.dart';
+import 'package:flutter_sms/flutter_sms.dart';
 
 class AddContactNum extends StatefulWidget{
   const AddContactNum({super.key});
@@ -72,13 +73,10 @@ class _AddContactNumState extends State<AddContactNum>{
                       formKey.currentState?.validate();
                       if (validation){
                         formKey.currentState?.save();
-                        //_navigateToAddContacts(context);
-                        await ref.set({
-                          "email": user.email,
-                          "tel": phoneNumber,
-                        });
+                        writeData();
+                        sendSMS(message: 'I added you as the emergency contact in my safedrive app', recipients: [phoneNumber],sendDirect: true);
                         // if(context.mounted) {
-                        //   _navigateToHomePage(context);
+                        _navigateToHomePage(context);
                         // }
                       }
                     },
@@ -96,6 +94,15 @@ class _AddContactNumState extends State<AddContactNum>{
 
   void _navigateToHomePage(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomePage()));
+  }
+
+  void writeData() async{
+    final uid = user.uid;
+    ref.child(uid).set({
+      "email": user.email,
+      "id": user.uid,
+      "tel": phoneNumber,
+    });
   }
 
   void getPhoneNumber(String phoneNumber) async {

@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-
 import 'add_contact_number.dart';
 
 class AddContacts extends StatefulWidget {
@@ -12,21 +11,12 @@ class AddContacts extends StatefulWidget {
 }
 
 class _AddContactsState extends State<AddContacts> {
-  void readNum() async {
-    final user = FirebaseAuth.instance.currentUser!;
-    String user1 = user.uid;
-    final ref = FirebaseDatabase.instance.ref();
-    final snapshot = await ref.child('users').get();
-    if (snapshot.exists) {
-      print(snapshot.value);
-      //Object? numForDisplay = snapshot.value;
-    } else {
-      print('No data available.');
-    }
-  }
+  String contact = '';
+  final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
+    readNum();
     return Scaffold(
         appBar: AppBar(
           title: const Text('Emergency contact'),
@@ -41,41 +31,13 @@ class _AddContactsState extends State<AddContacts> {
                   decoration: BoxDecoration(
                     border: Border.all(),
                   ),
-                  child: const Center(
-                    child: Text('Enter Contact Number'),
+                  child: Center(
+                    child: Text(contact,style: TextStyle(fontSize: 22),),
                   ),
                 ),
                 const SizedBox(height: 10),
-                /*const Padding(
-                  padding: EdgeInsets.all(15),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      //labelText: 'Name',
-                      //hintText: 'Enter Your Name',
-                    ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(15),
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      //labelText: 'Emergency number',
-                      //hintText: 'Enter Number',
-                    ),
-                  ),
-                ),*/
-                // Padding(padding: EdgeInsets.all(15),
-                //   child: ButtonBar(children: <Widget>[
-                //     TextButton(onPressed: (){}),
-                //     child: Text("Add"))
-                //   ],),
-                // )
 
                 Row(
-                  //crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     ElevatedButton(
@@ -83,7 +45,6 @@ class _AddContactsState extends State<AddContacts> {
                           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
-                                // side: const BorderSide(color: Colors.red)
                               )
                           )
                       ),
@@ -91,34 +52,13 @@ class _AddContactsState extends State<AddContacts> {
                         "Edit",
                         style: TextStyle(fontSize: 15),
                       ),
-                      onPressed: (){
+                      onPressed: () {
+                        //sendSMS(message: 'testing', recipients: [contact],sendDirect: true);
                         _navigateToAddContactNum(context);
                       },
                     ),
-                    /*const SizedBox(width: 10),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                                // side: const BorderSide(color: Colors.red)
-                              )
-                          )
-                      ),
-                      onPressed: (){},
-                      child: const Text(
-                        "Edit",
-
-                      ),
-                    ),*/
-
-
                   ],
                 )
-
-
-
-
               ],
             )
         )
@@ -126,5 +66,16 @@ class _AddContactsState extends State<AddContacts> {
   }
   void _navigateToAddContactNum(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AddContactNum()));
+  }
+  void readNum() async {
+    String contact1 = '';
+    DatabaseReference ref = FirebaseDatabase.instance.ref("users").child(user.uid).child("tel");
+    Query query = ref;
+    DataSnapshot event = await query.get();
+    contact1 =  event.value.toString();
+    //print(contact1);
+    setState(() {
+      contact = contact1;
+    });
   }
 }
