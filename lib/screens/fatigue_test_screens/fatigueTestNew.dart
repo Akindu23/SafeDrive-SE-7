@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:math';
+import 'package:quickalert/quickalert.dart';
+import 'package:safedrive/screens/home_page_screens/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -131,22 +133,22 @@ class QuizPage3 extends StatelessWidget {
         
         body: Container(
           color: Colors.white,
-          padding: EdgeInsets.all(20.0), 
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-            SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             Container(
               alignment: Alignment.topRight,
               child: Container(
                 width: 150.0,
                 decoration: BoxDecoration(
-                  color: Color(0xff000730),
+                  color: const Color(0xff000730),
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
                 alignment: Alignment.centerRight,
-                child: Align(
+                child: const Align(
                   alignment: Alignment.topRight,
                   child: Center(
                     child: Text(
@@ -160,22 +162,22 @@ class QuizPage3 extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-              Text(
+              const Text(
                 'Count the number of Triangles',
                 style: TextStyle(color: Color(0xff000730), fontSize: 30.0, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 30.0), 
+              const SizedBox(height: 30.0),
               Container(
-                padding: EdgeInsets.all(20.0), 
+                padding: const EdgeInsets.all(20.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10.0),
@@ -184,7 +186,7 @@ class QuizPage3 extends StatelessWidget {
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 5,
                       blurRadius: 7,
-                      offset: Offset(0, 3), 
+                      offset: const Offset(0, 3),
                     ),
                   ],
                 ),
@@ -193,7 +195,7 @@ class QuizPage3 extends StatelessWidget {
                   height: 170,
                   child: GridView.builder(
                     itemCount: 25,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 5,
                       mainAxisSpacing: 15.0,
                       crossAxisSpacing: 15.0,
@@ -204,14 +206,14 @@ class QuizPage3 extends StatelessWidget {
                       switch (shapeIndex) {
                         case 0:
                           return Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Color(0xff000730),
                               shape: BoxShape.circle,
                             ),
                           );
                         case 1:
                           return Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Color(0xff000730),
                               shape: BoxShape.rectangle,
                             ),
@@ -219,13 +221,13 @@ class QuizPage3 extends StatelessWidget {
                         case 2:
                           return CustomPaint(
                             painter: TrianglePainter(
-                              color: Color(0xff000730),
+                              color: const Color(0xff000730),
                             ),
                           );
                         case 3:
                           return CustomPaint(
                             painter: StarPainter(
-                              color: Color(0xff000730),
+                              color: const Color(0xff000730),
                             ),
                           );
                       }
@@ -234,15 +236,15 @@ class QuizPage3 extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox( height: 25.0 ),
+              const SizedBox( height: 25.0 ),
               Row(
                   children: [
-                    Text(
+                    const Text(
                       'Triangles : ',
                       style: TextStyle(color: Color(0xff000730), fontSize: 25.0, fontWeight: FontWeight.bold),
                     ),
                     
-                    Expanded(
+                    const Expanded(
                       child: TextField(
                         
                         decoration: InputDecoration(
@@ -253,7 +255,7 @@ class QuizPage3 extends StatelessWidget {
                       ),
                   ],
                 ),
-               SizedBox( height: 40.0 ),
+               const SizedBox( height: 40.0 ),
                ClipRRect(
                 borderRadius: BorderRadius.circular(30.0),
                 child: ElevatedButton(
@@ -264,11 +266,11 @@ class QuizPage3 extends StatelessWidget {
                        );
                      },
                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xff000730),
+                        primary: const Color(0xff000730),
                         onPrimary: Colors.white,
-                        padding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Next',
                         style: TextStyle(fontSize: 20.0),
                     ),
@@ -299,7 +301,7 @@ class QuizPage4 extends StatefulWidget {
 }
 
 class _QuizPage4State extends State<QuizPage4> {
-  Color _circleColor = Color.fromARGB(255, 0, 38, 255);
+  Color _circleColor = const Color.fromARGB(255, 0, 38, 255);
 
   // Add a bool flag to track whether the user clicked the button on time
   bool _clickedOnTime = false;
@@ -308,12 +310,12 @@ class _QuizPage4State extends State<QuizPage4> {
   void initState() {
     super.initState();
     // Start a timer to change the color of the circle after 5 seconds
-    Timer(Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 5), () {
       setState(() {
         _circleColor = Colors.yellow;
       });
     // Start another timer to check if the user clicked the button on time
-      Timer(Duration(seconds: 2), () {
+      Timer(const Duration(seconds: 2), () {
         // If the user clicked the button on time, set the corresponding answer to true
         if (_clickedOnTime) {
           MyApp().answers[2] = true;
@@ -333,22 +335,22 @@ class _QuizPage4State extends State<QuizPage4> {
       
       body: Container(
         color: Colors.white,
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 30.0), // add some space here
+            const SizedBox(height: 30.0), // add some space here
             Container(
               alignment: Alignment.topRight,
               child: Container(
               width: 150.0,
               decoration: BoxDecoration(
-                color: Color(0xff000730),
+                color: const Color(0xff000730),
                 borderRadius: BorderRadius.circular(30.0),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
               alignment: Alignment.centerRight,
-              child: Align(
+              child: const Align(
                 alignment: Alignment.topRight,
                 child: Center(
                   child: Text(
@@ -362,16 +364,16 @@ class _QuizPage4State extends State<QuizPage4> {
               ),
              ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Click the Next button when you see the colour change',
                     style: TextStyle(
                       color: Color(0xff000730),
@@ -379,7 +381,7 @@ class _QuizPage4State extends State<QuizPage4> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 50.0),
+                  const SizedBox(height: 50.0),
                   Container(
                     width: 150,
                     height: 150,
@@ -388,7 +390,7 @@ class _QuizPage4State extends State<QuizPage4> {
                       color: _circleColor,
                     ),
                   ),
-                  SizedBox(height: 70.0),
+                  const SizedBox(height: 70.0),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(30.0),
                     child: ElevatedButton(
@@ -399,11 +401,11 @@ class _QuizPage4State extends State<QuizPage4> {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xff000730),
+                        primary: const Color(0xff000730),
                         onPrimary: Colors.white,
-                        padding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Next',
                         style: TextStyle(fontSize: 20.0),
                       ),
@@ -432,22 +434,22 @@ class QuizPage5 extends StatelessWidget {
       
       body: Container(
         color: Colors.white,
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             Container(
               alignment: Alignment.topRight,
               child: Container(
                 width: 150.0,
                 decoration: BoxDecoration(
-                  color: Color(0xff000730),
+                  color: const Color(0xff000730),
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
                 alignment: Alignment.centerRight,
-                child: Align(
+                child: const Align(
                   alignment: Alignment.topRight,
                   child: Center(
                     child: Text(
@@ -461,16 +463,16 @@ class QuizPage5 extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                    Text(
+                    const Text(
                       'What is the number that you memorized?',
                       style: TextStyle(
                         color: Color(0xff000730),
@@ -478,7 +480,7 @@ class QuizPage5 extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-            SizedBox(height: 60.0),
+            const SizedBox(height: 60.0),
             TextField(
               style: TextStyle(
                 fontSize: 35.0,
@@ -488,29 +490,29 @@ class QuizPage5 extends StatelessWidget {
               textAlign: TextAlign.center,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                hintText: 'Enter a 2 digit number',
+                // hintText: 'Enter a 2 digit number',
                 hintStyle: TextStyle(
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.grey[300],
                 ),
-                border: UnderlineInputBorder(
+                border: const UnderlineInputBorder(
                   borderSide: BorderSide.none,
                 ),
-                contentPadding: EdgeInsets.symmetric(horizontal: 60.0, vertical: 10.0),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 10.0),
               ),
               maxLength: 2,
             ),
-            SizedBox(height: 1.0),
+            const SizedBox(height: 1.0),
             Container(
               height: 5.0,
               decoration: BoxDecoration(
-                color: Color(0xff000730),
+                color: const Color(0xff000730),
                 borderRadius: BorderRadius.circular(5.0),
               ),
               width: 100.0,
             ),
-            SizedBox(height: 100.0),
+            const SizedBox(height: 100.0),
             ClipRRect(
                 borderRadius: BorderRadius.circular(30.0),
                 child: ElevatedButton(
@@ -532,15 +534,15 @@ class QuizPage5 extends StatelessWidget {
                      
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => QuizScore(answers: [false, true, false, true])),
+                        MaterialPageRoute(builder: (context) => QuizScore(answers: [false, false, false, true])),
                       );
                      },
                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xff000730),
+                        primary: const Color(0xff000730),
                         onPrimary: Colors.white,
-                        padding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Finish',
                         style: TextStyle(fontSize: 20.0),
                     ),
@@ -584,8 +586,8 @@ class QuizScore extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 30.0),
-            Text(
+            const SizedBox(height: 30.0),
+            const Text(
               'Your Score:',
               style: TextStyle(
                 color: Color(0xff000730),
@@ -593,7 +595,7 @@ class QuizScore extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 60.0),
+            const SizedBox(height: 60.0),
             SizedBox(
               width: width,
               height: height,
@@ -611,7 +613,7 @@ class QuizScore extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 120.0),
+            const SizedBox(height: 120.0),
             ClipRRect(
               borderRadius: BorderRadius.circular(30.0),
               child: ElevatedButton(
@@ -622,11 +624,11 @@ class QuizScore extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xff000730),
+                  primary: const Color(0xff000730),
                   onPrimary: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 45.0, vertical: 15.0),
                 ),
-                child: Text(
+                child: const Text(
                   'Next',
                   style: TextStyle(fontSize: 20.0),
                 ),
@@ -659,7 +661,7 @@ class ProgressPainter extends CustomPainter {
 
     canvas.drawCircle(Offset(centerX, centerY), radius, paint);
 
-    paint.color = progress >= 0.93 ? Color(0xff000730) : Colors.grey[300]!;
+    paint.color = progress >= 0.93 ? const Color(0xff000730) : Colors.grey[300]!;
     double sweepAngle = 2 * pi * progress;
     canvas.drawArc(
       Rect.fromCircle(center: Offset(centerX, centerY), radius: radius),
@@ -688,7 +690,7 @@ class ProgressPainter extends CustomPainter {
 
 
 class QuizReview extends StatelessWidget {
-  final List<Map<String, dynamic>> questions = [    {'question': 'Question 01', 'status': '---'},    {'question': 'Question 02', 'status': 'Incorrect'},    {'question': 'Question 03', 'status': 'Correct'},    {'question': 'Question 04', 'status': 'Incorrect'},    {'question': 'Question 05', 'status': 'Correct'},  ];
+  final List<Map<String, dynamic>> questions = [    {'question': 'Question 01', 'status': '---'},    {'question': 'Question 02', 'status': 'Not Sufficient'},    {'question': 'Question 03', 'status': 'Slow Reaction'},    {'question': 'Question 04', 'status': 'Incorrect'},    {'question': 'Question 05', 'status': 'Correct'},  ];
 
   @override
   Widget build(BuildContext context) {
@@ -699,21 +701,21 @@ class QuizReview extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: 30),
-            Center(
+            const SizedBox(height: 30),
+            const Center(
               child: Text(
                 'Quiz Results',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: DataTable(
                 columnSpacing: 50,
                 horizontalMargin: 50,
                 columns: [
-                  DataColumn(label: Text('Question')),
-                  DataColumn(label: Text('Status')),
+                  const DataColumn(label: Text('Question')),
+                  const DataColumn(label: Text('Status')),
                 ],
                 rows: questions
                     .map((question) => DataRow(cells: [
@@ -723,7 +725,26 @@ class QuizReview extends StatelessWidget {
                     .toList(),
               ),
             ),
-            SizedBox(height: 80.0),
+            const SizedBox(height: 80.0),
+
+            Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.blueGrey,
+                    width: 2.0,
+                  ),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                child: const Text(
+                  'You are Fatigued',
+                  style: TextStyle(fontSize: 25.0, color: Colors.red),
+                ),
+              ),
+            ),
+            const SizedBox(height: 50.0,),
+
             Center(
               child: SizedBox(
                 width: 145.0,
@@ -732,17 +753,17 @@ class QuizReview extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => QuizReview()),
+                      MaterialPageRoute(builder: (context) => const HomePage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xff000730),
+                    primary: const Color(0xff000730),
                     onPrimary: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Exit',
                     style: TextStyle(fontSize: 20.0),
                   ),

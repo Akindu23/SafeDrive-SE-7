@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:safedrive/screens/fatigue_detection_screens/camera_screen.dart';
 import 'package:safedrive/screens/fatigue_test_screens/test_fatigue.dart';
+import 'package:safedrive/screens/home_page_screens/help_page.dart';
 import 'package:safedrive/screens/maps_screen/maps_screen.dart';
 import 'package:safedrive/utils/util_functions.dart';
 import '../emergency_contacts_screens/add_contacts.dart';
@@ -25,12 +26,42 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               const SizedBox(
-                height: 75,
+                height: 50,
+              ),
+              const Padding(
+                  padding: EdgeInsets.only(left: 250),
+                  child:
+                    Icon(
+                    Icons.account_circle_rounded,
+                    size: 50,
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 125),
+                padding: const EdgeInsets.only(left: 15),
                 child: Row(
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 25),
+                      child: MaterialButton(
+                        onPressed: (){
+                          UtilFunction.navigateTo(context, const HelpPage());
+                        },
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                        ),
+                        color: const Color(0xff000730),
+                        child: const Text(
+                          "Help",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 35,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -59,10 +90,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const SizedBox(
                       width: 10,
-                    ),
-                    const Icon(
-                      Icons.account_circle_rounded,
-                      size: 50,
                     ),
                   ],
                 ),
