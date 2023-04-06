@@ -58,6 +58,7 @@ dependencies:
   flutter_sms: ^2.3.3
   email_validator: ^2.1.17
   password_validator: ^0.0.1
+  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_test:

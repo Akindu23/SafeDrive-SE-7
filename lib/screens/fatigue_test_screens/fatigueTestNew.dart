@@ -690,7 +690,7 @@ class ProgressPainter extends CustomPainter {
 
 
 class QuizReview extends StatelessWidget {
-  final List<Map<String, dynamic>> questions = [    {'question': 'Question 01', 'status': '---'},    {'question': 'Question 02', 'status': 'Not Sufficient'},    {'question': 'Question 03', 'status': 'Slow Reaction'},    {'question': 'Question 04', 'status': 'Incorrect'},    {'question': 'Question 05', 'status': 'Correct'},  ];
+  final List<Map<String, dynamic>> questions = [    {'question': 'Question 01', 'status': '---'},    {'question': 'Question 02', 'status': 'Not Sufficient'},    {'question': 'Question 03', 'status': 'Incorrect'},    {'question': 'Question 04', 'status': 'Slow Reaction'},    {'question': 'Question 05', 'status': 'Correct'},  ];
 
   @override
   Widget build(BuildContext context) {
