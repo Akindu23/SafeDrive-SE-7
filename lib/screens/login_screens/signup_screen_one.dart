@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/material/checkbox.dart';
@@ -13,6 +14,7 @@ class signupScreenOne extends StatefulWidget {
 }
 
 class _SignupScreenOneState extends State<signupScreenOne> {
+  final formKey = GlobalKey<FormState>(); //key for form
 
   //test controllers
   final _emailController = TextEditingController();
@@ -110,7 +112,7 @@ class _SignupScreenOneState extends State<signupScreenOne> {
                 )
               ]),
           height: 60,
-          child: TextField(
+          child: TextFormField(
             controller: _emailController,
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
@@ -127,6 +129,9 @@ class _SignupScreenOneState extends State<signupScreenOne> {
                 hintStyle: TextStyle(
                   color: Colors.black54,
                 )),
+            validator: (email) => email != null && !EmailValidator.validate(email)
+                ? '                Enter a valid Email'
+                : null,
           ),
         ),
       ],
@@ -239,7 +244,13 @@ class _SignupScreenOneState extends State<signupScreenOne> {
 
   Widget buildLoginBtn(){
     return GestureDetector(
-      onTap: signUp,
+      onTap: () {
+        final form = formKey.currentState!;
+        if(form.validate()) {
+        }else{
+
+        }
+      } ,
       //() {
       //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=> signupScreenTwo()));
       // },
@@ -256,12 +267,15 @@ class _SignupScreenOneState extends State<signupScreenOne> {
               )
             ]
         ),
-        child: Center(
-          child: Text("Sign Up",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+        child: GestureDetector(
+          onTap: signUp,
+          child: Center(
+            child: Text("Sign Up",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
@@ -302,67 +316,70 @@ class _SignupScreenOneState extends State<signupScreenOne> {
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
-          child: Stack(
-            children: <Widget>[
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0x87ceebff),
-                          //Color(0x991493ff),
-                          //Color(0xcc1493ff),
-                          Color(0xff2e93ff),
-                        ])),
-                child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 25,
-                    vertical: 25,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      SizedBox(height: 50,),
-                      Container(
-                        child: Image(image: AssetImage("assets/images/safedrivelogo.png"),
-                          height: 100,
-                          width: 100,
+          child: Form(
+            key: formKey, //key for form
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  height: double.infinity,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color(0x87ceebff),
+                            //Color(0x991493ff),
+                            //Color(0xcc1493ff),
+                            Color(0xff2e93ff),
+                          ])),
+                  child: SingleChildScrollView(
+                    physics: AlwaysScrollableScrollPhysics(),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 25,
+                      vertical: 25,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(height: 50,),
+                        Container(
+                          child: Image(image: AssetImage("assets/images/safedrivelogo.png"),
+                            height: 100,
+                            width: 100,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "SafeDrive",
-                        style: TextStyle(
-                          color: Color(0xff000730),
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+                        Text(
+                          "SafeDrive",
+                          style: TextStyle(
+                            color: Color(0xff000730),
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 35,
-                      ),
-                      buildTextSignUp(),
-                      SizedBox(height: 20,),
-                      buildEmail(),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      buildPassword(),
-                      SizedBox(height: 25,),
-                      buildConfirmPassword(),
-                      SizedBox(height: 50,),
-                      buildLoginBtn(),
-                      SizedBox(height: 25,),
-                      SizedBox(height: 25,),
-                      buildSignUpBtn(),
-                    ],
+                        SizedBox(
+                          height: 35,
+                        ),
+                        buildTextSignUp(),
+                        SizedBox(height: 20,),
+                        buildEmail(),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        buildPassword(),
+                        SizedBox(height: 25,),
+                        buildConfirmPassword(),
+                        SizedBox(height: 50,),
+                        buildLoginBtn(),
+                        SizedBox(height: 25,),
+                        SizedBox(height: 25,),
+                        buildSignUpBtn(),
+                      ],
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
