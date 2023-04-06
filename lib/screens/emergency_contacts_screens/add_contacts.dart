@@ -105,7 +105,6 @@ class _AddContactsState extends State<AddContacts> {
     Query query = ref;
     DataSnapshot event = await query.get();
     contact1 =  event.value.toString();
-    //print(contact1);
     setState(() {
       contact = contact1;
     });
