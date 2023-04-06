@@ -28,14 +28,6 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 50,
               ),
-              const Padding(
-                  padding: EdgeInsets.only(left: 250),
-                  child:
-                    Icon(
-                    Icons.account_circle_rounded,
-                    size: 50,
-                ),
-              ),
               Padding(
                 padding: const EdgeInsets.only(left: 15),
                 child: Row(
@@ -90,6 +82,14 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const SizedBox(
                       width: 10,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 0),
+                      child:
+                      Icon(
+                        Icons.account_circle_rounded,
+                        size: 50,
+                      ),
                     ),
                   ],
                 ),
