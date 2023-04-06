@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/material/checkbox.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:safedrive/screens/login_screens/google_sign_in.dart';
 import 'package:safedrive/screens/login_screens/signup_screen_one.dart';
 import 'package:safedrive/screens/login_screens/forgot_password_page.dart';
 
@@ -253,23 +255,29 @@ class _LoginScreenState extends State<loginScreen> {
   }
 
   Widget buildGoogleLogin(){
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          child: Image(image: AssetImage("assets/images/googleLogo.png"),
-            height: 30,
-            width: 30,
+    return GestureDetector(
+      onTap: () {
+        final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+        provider.googleLogin();
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            child: Image(image: AssetImage("assets/images/googleLogo.png"),
+              height: 30,
+              width: 30,
+            ),
           ),
-        ),
-        SizedBox(width: 10,),
-        Text("Sign in with google",style: TextStyle(
-          fontSize: 20,
-          color: Colors.white,
-          fontWeight: FontWeight.w500,
-        ),
-        ),
-      ],
+          SizedBox(width: 10,),
+          Text("Sign in with google",style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+            fontWeight: FontWeight.w500,
+          ),
+          ),
+        ],
+      ),
     );
   }
 
